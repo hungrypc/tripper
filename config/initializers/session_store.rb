@@ -1,0 +1,1 @@
+Rails.application.config.session_store :cookie_store, key: "_authetication", domain: "http://localhost:3000"

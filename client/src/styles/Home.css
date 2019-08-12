@@ -1,0 +1,19 @@
+.nav-link {
+    display: inline;
+}
+
+.nav-link a {
+    color: black;
+}
+
+.header {
+    margin: 40px auto 20px auto;
+}
+
+label {
+    margin: 10px 0;
+}
+
+.input-group {
+    justify-content: center;
+}

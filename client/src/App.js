@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+// import Navbar from './components/Navbar';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Home from './main/Home';
+import Dashboard from './main/Dashboard';
 import axios from 'axios';
 import './App.css';
 
@@ -6,30 +10,62 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      message: 'Click the button to load data!'
+      loggedInStatus: 'NOT_LOGGED_IN',
+      user: 0,
+      cookie: ''
     }
   }
-
-  fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
-
-      console.log(response.data.message) // Just the message
-      this.setState({
-        message: response.data.message
+  checkLoginStatus() {
+    if (this.state.loggedInStatus === 'LOGGED_IN') {
+      console.log('logged in')
+    }
+    else {
+    this.props.history.push('/login')
+    }
+      axios.get("http://localhost:3001/logged_in", { withCredentials: true })
+      .then(res => {
+        console.log('check login res', res)
+        if (res.data.logged_in) {
+          this.setState({
+            loggedInStatus: "LOGGED_IN",
+            user: res.data.user
+          })
+        } 
+        else if (!res.data.logged_in & this.state.loggedInStatus === "LOGGED_IN") {
+          this.setState({
+            loggedInStatus: "NOT_LOGGED_IN",
+            user: {}
+          })
+        }
+      }).catch(error => {
+        console.log('check login error', error);
       });
-    }) 
+  }
+
+  handleLogin = (data) => {
+    this.setState({
+      loggedInStatus: "LOGGED_IN",
+      user: data.user,
+      // cookie: cookie.get('user_id')
+    })
+    console.log(this.state)
   }
 
   render() {
     return (
       <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
+        {/* <Navbar /> */}
+        <BrowserRouter>
+          <Switch>
+            <Route exact path={"/"} render={props => (
+              <Home {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} login={this.handleLogin} />
+            )} />
+            <Route exact path={"/dashboard"} render={props => (
+              <Dashboard {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} />
+            )} />
+
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }

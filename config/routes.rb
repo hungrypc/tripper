@@ -1,16 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  namespace :api do # /api/data
+  resources :sessions, only: [:create]
+  resources :registrations, only: [:create]
+  resources :users, only: [:show, :create, :destroy, :index]
+  delete :logout, to: 'sessions#logout'
+  get :logged_in, to: 'sessions#logged_in'
 
-    get '/data', to: 'tests#index'
-    
-    resources :dogs
-
-  end
-
-  get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do
-    !request.xhr? && request.format.html?
-  end
 
 end
