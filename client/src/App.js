@@ -15,6 +15,7 @@ class App extends Component {
       cookie: ''
     }
   }
+
   checkLoginStatus() {
     if (this.state.loggedInStatus === 'LOGGED_IN') {
       console.log('logged in')
@@ -58,7 +59,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path={"/"} render={props => (
-              <Home {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} login={this.handleLogin} />
+              <Home {...props} handleLogin={this.handleLogin} />
             )} />
             <Route exact path={"/dashboard"} render={props => (
               <Dashboard {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} />

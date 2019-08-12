@@ -17,3 +17,7 @@ label {
 .input-group {
     justify-content: center;
 }
+
+.trip-form button {
+    margin: 0 27%;
+}

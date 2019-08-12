@@ -1,0 +1,94 @@
+.dashboard {
+    display: block;
+    height: 94vh;
+    width: 100%;
+}
+
+/* TOP WRAPPER */
+
+.top-wrapper {
+    display: block;
+    flex-direction: row;
+    width: 80%;
+    height: 40vh;
+    margin: 6vh auto 0 auto;
+    padding: 4% 5%;
+}
+
+.profile-wrapper {
+    border: 1px solid #aaa;
+    border-radius: 12px;
+    float: left;
+    width: 55%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 4%;
+}
+
+.dash-profile-picture-container {
+    display: inline-flex;
+    width: 30%;
+    height: 100%;
+    margin: 0 2.5%;
+    vertical-align: top;
+}
+
+.dash-profile-picture {
+    background-color: beige;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    vertical-align: middle;
+    margin: auto;
+}
+
+.dash-user-info-wrapper {
+    display: inline-block;
+    /* background-color: burlywood; */
+    width: 60%;
+    height: 100%;
+    margin: 0 2.5%;
+    vertical-align: top;
+    padding: 7% 5%;
+}
+
+.dash-user-info {
+    display: block;
+    text-align: left;
+}
+
+.dash-user-info p {
+    vertical-align: middle;
+    margin: 1% 0;
+}
+
+.friends-wrapper {
+    border: 1px solid #aaa;
+    border-radius: 12px;
+    float: right;
+    width: 40%;
+    height: 100%;
+}
+
+
+
+/* BOTTOM WRAPPER */
+
+.bottom-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 80%;
+    height: 45vh;
+    margin: 0 auto;
+    padding: 2% 5% ;
+}
+
+.prev-trips-wrapper {
+    display: block;
+    border: 1px solid #aaa;
+    border-radius: 12px;
+    height: 100%;
+    width: 100%;
+}

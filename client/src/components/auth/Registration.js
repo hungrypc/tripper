@@ -58,9 +58,9 @@ class Registration extends Component {
                 <div className="container">
                     <div className="input-group mb-3">
                         <form onSubmit={this.handleSubmit}>
-                            <input className="form-control" type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} required />
+                            <input className="form-control" type="email" name="email" placeholder="Email" autoComplete="off" value={this.state.email} onChange={this.handleChange} required />
                             <br></br>
-                            <input className="form-control" type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} required />
+                            <input className="form-control" type="text" name="name" placeholder="Name" autoComplete="off" value={this.state.name} onChange={this.handleChange} required />
                             <br></br>
                             <input className="form-control" type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required />
                             <br></br>

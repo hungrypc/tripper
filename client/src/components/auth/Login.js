@@ -55,9 +55,9 @@ class Login extends Component {
                 <div className="container">
                     <div className="input-group mb-3">
                         <form onSubmit={this.handleSubmit}>
-                            <input className="form-control" id="email" type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} required />
+                            <input className="form-control" id="email" type="email" name="email" placeholder="Email" autoComplete="off" value={this.state.email} onChange={this.handleChange} required />
                             <br></br>
-                            <input className="form-control" id="password" type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required />
+                            <input className="form-control" id="password" type="password" name="password" placeholder="Password" autoComplete="off" value={this.state.password} onChange={this.handleChange} required />
                             <label htmlFor="remember" className="pure-checkbox">
                                 <input id="remember" type="checkbox" /> Remember me
                             </label>
