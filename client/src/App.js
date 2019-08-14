@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       loggedInStatus: 'NOT_LOGGED_IN',
       user: 0,
-      cookie: ''
+      trip: 0
     }
   }
 
@@ -54,6 +54,12 @@ class App extends Component {
     // console.log(this.state)
   }
 
+  handleTrip = (data) => {
+    this.setState({
+      trip: data.trip
+    })
+  }
+
 
   render() {
     return (
@@ -65,10 +71,10 @@ class App extends Component {
               <Home {...props} handleLogin={this.handleLogin} />
             )} />
             <Route exact path={"/dashboard"} render={props => (
-              <Dashboard {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} />
+              <Dashboard {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} handleTrip={this.handleTrip}/>
             )} />
             <Route exact path={"/users/:user_id/trips/:trip_id"} render={(props) => (
-              <Trip {...props} user={this.state.user} />
+              <Trip {...props} user={this.state.user} trip={this.state.trip} />
             )} />
           </Switch>
         </BrowserRouter>

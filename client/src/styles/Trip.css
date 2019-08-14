@@ -1,0 +1,132 @@
+/* TRIP PAGE SKELETON */
+
+.trip-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 94vh;
+    margin-top: 6vh;
+}
+
+.trip-container {
+    display: block;
+    width: 80%;
+    height: 100%;
+}
+
+.trip-bottom {
+    display: block;
+    width: 100%;
+    height: 65%;
+}
+
+/* TOP BLOCK */
+
+.trip-titlecard {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 35%;
+    background-image: url("https://images.unsplash.com/photo-1548022401-6b11ed578cc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3750&q=80");
+    background-size: 100%;
+    background-position: bottom;
+    background-attachment: fixed;
+}
+
+.titlecard-info {
+    display: block;
+    width: 50%;
+    height: 60%;
+    margin-top: 7%;
+}
+
+.titlecard-title {
+    display: block;
+    width: 100%;
+    height: 50%;
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.titlecard-users {
+    display: block;
+    width: 100%;
+    height: 50%;
+    background-color: lightseagreen;
+}
+
+/* LEFT BLOCK */
+
+.trip-left {
+    display: inline-block;
+    width: 35%;
+    height: 100%;
+    padding: 3%;
+    vertical-align: top;
+    background-color: cadetblue;
+}
+
+.trip-left-container {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: lightslategray;
+}
+
+.map-container {
+    display: block;
+    width: 100%;
+    height: 50%;
+    background-color: aquamarine;
+}
+
+.trip-info-container {
+    display: block;
+    width: 100%;
+    height: 50%;
+    padding: 5%;
+    background-color: lightcoral;
+}
+
+.trip-info {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    background-color: azure;
+}
+
+
+/* RIGHT BLOCK */
+
+.trip-right {
+    display: inline-block;
+    width: 65%;
+    height: 100%;
+    background-color: black;
+}
+
+.days-container {
+    display: block;
+    width: 100%;
+    height: 10%;
+    background-color: lightgreen;
+}
+
+.itin-container {
+    display: block;
+    width: 100%;
+    height: 90%;
+    padding: 2%;
+    background-color: cornflowerblue;
+}
+
+.itin {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: lightyellow;
+}

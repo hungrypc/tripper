@@ -31,7 +31,7 @@ class TripForm extends Component {
 
 
     handleSubmit = (event) => {
-        console.log('this', this);
+        // console.log('this', this);
 
         event.preventDefault();
         this.setState({
@@ -54,6 +54,7 @@ class TripForm extends Component {
             .then((response) => {
                 // console.log('tripform res data', response.data)
 
+                this.props.handleTrip(response.data);
                 this.props.history.push(`/users/${this.state.id}/trips/${response.data.id}`);
 
             })

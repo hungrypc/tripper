@@ -57,7 +57,7 @@ class Dashboard extends Component {
                                 Add a Trip
                             </Button>
                             <TripForm show={this.state.addModalShow} onHide={addModalClose} 
-                            user={this.state.user}
+                            user={this.state.user} handleTrip={this.props.handleTrip}
                             ></TripForm>
                         </ButtonToolbar>
                     </div>

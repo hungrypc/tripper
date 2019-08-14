@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
         @items = @trip.items
         
         render :json => {
-            activities: @item
+            activities: @items
         }
     end
 

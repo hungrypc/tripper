@@ -13,7 +13,7 @@ class TripsController < ApplicationController
     def show
 
         @trip = Trip.find(params[:id])
-        # puts params
+        puts params
 
         render json: {
             trip: @trip,
@@ -40,7 +40,7 @@ class TripsController < ApplicationController
                 @trip_user.user = @user
                 @trip_user.trip = @trip
                 # @trip_user.save
-                render :json =>  @trip
+                render :json => {trip: @trip }
              else
                 render :json => { errors: @trip.errors }
             end
