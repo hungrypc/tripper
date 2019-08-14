@@ -20,11 +20,9 @@ class Dashboard extends Component {
     }
 
 
-    // {this.props.loggedInStatus}
-
     render() {
 
-        console.log("dashboard user state", this.state.user)
+        // console.log("dashboard user state", this.state.user)
 
         let addModalClose = () => {
             this.setState({

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 import "../../node_modules/react-datetime/css/react-datetime.css";
 
 const axios = require('axios')
 const DateTime = require('react-datetime');
-
 
 let yesterday = DateTime.moment().subtract(1, 'day');
 let valid = function (current) {
@@ -30,7 +30,9 @@ class TripForm extends Component {
     }
 
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
+        console.log('this', this);
+
         event.preventDefault();
         this.setState({
             title: this.state.title,
@@ -39,9 +41,8 @@ class TripForm extends Component {
             end_date: this.state.end_date,
             user_id: this.state.id
         });
-        // console.log(this.state)
+        
         axios.post(`http://localhost:3000/users/${this.state.id}/trips`,
-        // axios.post(`http://localhost:3000/trips`,
             {
                 // user_id: this.props.cookies.get('user_id'),
                 title: this.state.title,
@@ -51,19 +52,12 @@ class TripForm extends Component {
                 user_id: this.state.id
             })
             .then((response) => {
-                // this.props.setTrip(response.data.id)
-                // console.log('tripform res data', response.data.id)
-                // this.setState({
-                //     id: response.data.id,
-                //     submit: true
-                // })
+                // console.log('tripform res data', response.data)
 
-                // this.props.setTrip(response.data.id);
-                // console.log('tripform state after post', this.state)
-                // window.location.href = `/trips/${response.data.id}`
+                this.props.history.push(`/users/${this.state.id}/trips/${response.data.id}`);
+
             })
         // return this.setState({ error: '' });
-
     }
 
 
@@ -86,17 +80,12 @@ class TripForm extends Component {
     };
 
 
-
     render() {
-        // console.log(this.state)
+
         return (
             <div>
                 <Modal
-                    {...this.props}
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                >
+                    {...this.props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
                             Add a Trip
@@ -137,12 +126,9 @@ class TripForm extends Component {
                     </Modal.Body>
                 </Modal>
 
-
-
-
             </div>
         )
     }
 }
 
-export default TripForm
+export default withRouter(TripForm)

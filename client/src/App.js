@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './main/Home';
 import Dashboard from './main/Dashboard';
+import Trip from './main/Trip';
 import axios from 'axios';
 import './App.css';
+
 
 class App extends Component {
   constructor(props) {
@@ -49,8 +51,9 @@ class App extends Component {
       user: data.user,
       // cookie: cookie.get('user_id')
     })
-    console.log(this.state)
+    // console.log(this.state)
   }
+
 
   render() {
     return (
@@ -64,7 +67,9 @@ class App extends Component {
             <Route exact path={"/dashboard"} render={props => (
               <Dashboard {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} />
             )} />
-
+            <Route exact path={"/users/:user_id/trips/:trip_id"} render={(props) => (
+              <Trip {...props} user={this.state.user} />
+            )} />
           </Switch>
         </BrowserRouter>
       </div>
