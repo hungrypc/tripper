@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import "../../node_modules/react-datetime/css/react-datetime.css";
 
 const axios = require('axios')
@@ -19,7 +19,7 @@ class TripForm extends Component {
             location: '',
             start_date: '',
             end_date: '',
-            id: 0,
+            id: this.props.user.id,
             submit: false
         };
 
@@ -36,16 +36,19 @@ class TripForm extends Component {
             title: this.state.title,
             location: this.state.location,
             start_date: this.state.start_date,
-            end_date: this.state.end_date
+            end_date: this.state.end_date,
+            user_id: this.state.id
         });
         // console.log(this.state)
-        axios.post(`http://localhost:3000/trips`,
+        axios.post(`http://localhost:3000/users/${this.state.id}/trips`,
+        // axios.post(`http://localhost:3000/trips`,
             {
                 // user_id: this.props.cookies.get('user_id'),
                 title: this.state.title,
                 location: this.state.location,
                 start_date: this.state.start_date,
-                end_date: this.state.end_date
+                end_date: this.state.end_date,
+                user_id: this.state.id
             })
             .then((response) => {
                 // this.props.setTrip(response.data.id)
@@ -85,6 +88,7 @@ class TripForm extends Component {
 
 
     render() {
+        // console.log(this.state)
         return (
             <div>
                 <Modal
@@ -127,7 +131,7 @@ class TripForm extends Component {
                                     required
                                 />
                                 <br></br>
-                                <button type="submit" class="btn btn-dark">Continue</button>
+                                <button type="submit" className="btn btn-dark">Continue</button>
                             </form>
                         </div>
                     </Modal.Body>

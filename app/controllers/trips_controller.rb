@@ -22,26 +22,28 @@ class TripsController < ApplicationController
     end
 
     def create
-        puts params
-        puts params[:trip]
-        @user =  User.find( params[:user_id])
+        # puts params
+        # puts params[:trip]
+        @user =  User.find( params[:user_id] )
 
         if(@user)
-            @trip = Trip.new(user_params)
-            puts user_params
-            @trip_user = TripUser.new()
+            @trip = Trip.create!(user_params)
+            puts "PUTS @TRIP"
+            puts @trip
+            @trip_user = UserTrip.new()
 
-            # @trip.user = @user
+            # @trip.users = @user
     
-            if @trip.save!
+            # if @trip.save
+                # @trip.save!
                 @trip.users << @user
-                # @trip_user.user = @user
-                # @trip_user.trip = @trip
+                @trip_user.user = @user
+                @trip_user.trip = @trip
                 # @trip_user.save
                 render :json =>  @trip
-             else
-                render :json => { errors: @trip.errors }
-            end
+            #  else
+            #     render :json => { errors: @trip.errors }
+            # end
 
         end
     end
@@ -49,7 +51,7 @@ class TripsController < ApplicationController
     private
 
     def user_params
-        params.require(:trip).permit(:title, :location, :start_date, :end_date)
+        params.require(:trip).permit(:title, :location, :start_date, :end_date, :user_id)
       end
   
 

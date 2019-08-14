@@ -8,8 +8,14 @@ class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user: 0,
+            user: this.props.user,
             addModalShow: false
+        }
+    }
+
+    componentDidMount() {
+        if (!this.state.user) {
+            this.props.history.push('/');
         }
     }
 
@@ -17,6 +23,8 @@ class Dashboard extends Component {
     // {this.props.loggedInStatus}
 
     render() {
+
+        console.log(this.state.user)
 
         let addModalClose = () => {
             this.setState({
@@ -50,7 +58,9 @@ class Dashboard extends Component {
                             <Button id="invite-button" variant='dark' onClick={() => { this.setState({ addModalShow: true }) }}>
                                 Add a Trip
                             </Button>
-                            <TripForm show={this.state.addModalShow} onHide={addModalClose} ></TripForm>
+                            <TripForm show={this.state.addModalShow} onHide={addModalClose} 
+                            user={this.state.user}
+                            ></TripForm>
                         </ButtonToolbar>
                     </div>
                 </div>

@@ -21,9 +21,9 @@ class App extends Component {
       console.log('logged in')
     }
     else {
-    this.props.history.push('/login')
+      this.props.history.push('/login')
     }
-      axios.get("http://localhost:3001/logged_in", { withCredentials: true })
+    axios.get("http://localhost:3001/logged_in", { withCredentials: true })
       .then(res => {
         console.log('check login res', res)
         if (res.data.logged_in) {
@@ -31,7 +31,7 @@ class App extends Component {
             loggedInStatus: "LOGGED_IN",
             user: res.data.user
           })
-        } 
+        }
         else if (!res.data.logged_in & this.state.loggedInStatus === "LOGGED_IN") {
           this.setState({
             loggedInStatus: "NOT_LOGGED_IN",

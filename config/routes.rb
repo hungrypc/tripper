@@ -3,12 +3,15 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
-  resources :users, only: [:show, :create, :destroy, :index]
+  # resources :users, only: [:show, :create, :destroy, :index]
+  
   delete :logout, to: 'sessions#logout'
   get :logged_in, to: 'sessions#logged_in'
 
-  resources :trips, except: [:index] do 
-    resources :items, only: [:show, :create, :destroy, :index]
+  resources :users, only: [:show, :create, :destroy, :index] do
+    resources :trips, except: [:index] do 
+      resources :items, only: [:show, :create, :destroy, :index]
+    end
   end
 
 
