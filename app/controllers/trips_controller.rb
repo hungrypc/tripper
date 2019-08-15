@@ -2,11 +2,10 @@ ActionController::Cookies
 class TripsController < ApplicationController
 
     def index
-        @trip = Trip.find(params[:trip_id])
-        @travels = @trip.travels
+        @trip = Trip.all
         
         render :json => {
-            travels: @travels
+            trips: @trips
         }
     end
 
@@ -40,7 +39,7 @@ class TripsController < ApplicationController
                 @trip_user.user = @user
                 @trip_user.trip = @trip
                 # @trip_user.save
-                render :json => {trip: @trip }
+                render :json => { trip: @trip }
              else
                 render :json => { errors: @trip.errors }
             end

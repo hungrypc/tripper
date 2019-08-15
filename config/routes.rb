@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :create, :destroy, :index] do
     resources :trips, except: [:index] do 
-      resources :items, only: [:show, :create, :destroy, :index]
+      resources :days, only: [:index, :show, :create, :destroy] do
+        resources :items, only: [:show, :create, :destroy, :index]
+      end
     end
   end
 
