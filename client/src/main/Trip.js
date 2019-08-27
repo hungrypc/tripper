@@ -9,7 +9,8 @@ class Trip extends Component {
         this.state = {
             test: null,
             user: this.props.user,
-            trip: this.props.trip
+            trip: this.props.trip,
+            days: []
         }
     }
 
@@ -19,7 +20,7 @@ class Trip extends Component {
 
         // USE THIS TO GET DAYS
 
-        axios.get(`http://localhost:3001/users/${this.state.user.id}trips/${this.state.trip.id}/days`)
+        axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days`)
             .then(res => {
                  console.log('get days response', res);
 
@@ -38,7 +39,7 @@ class Trip extends Component {
                         <div className="trip-titlecard">
                             <div className="titlecard-info">
                                 <div className="titlecard-title">{this.state.trip.title}</div>
-                                <div className="titlacard-users"></div>
+                                <div className="titlecard-users"></div>
                             </div>
                         </div>
                         <div className="trip-bottom">

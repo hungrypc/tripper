@@ -60,6 +60,12 @@ class App extends Component {
     })
   }
 
+  setTrip = (data) => {
+    this.setState({
+      trip: data
+    })
+  }
+
 
   render() {
     return (
@@ -71,7 +77,9 @@ class App extends Component {
               <Home {...props} handleLogin={this.handleLogin} />
             )} />
             <Route exact path={"/dashboard"} render={props => (
-              <Dashboard {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} handleTrip={this.handleTrip}/>
+              <Dashboard {...props} user={this.state.user} 
+              loggedInStatus={this.state.loggedInStatus} handleTrip={this.handleTrip}
+              setTrip={this.setTrip} />
             )} />
             <Route exact path={"/users/:user_id/trips/:trip_id"} render={(props) => (
               <Trip {...props} user={this.state.user} trip={this.state.trip} />

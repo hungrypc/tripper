@@ -55,7 +55,7 @@ class TripForm extends Component {
                 // console.log('tripform res data', response.data)
 
                 this.props.handleTrip(response.data);
-                this.props.history.push(`/users/${this.state.id}/trips/${response.data.id}`);
+                this.props.history.push(`/users/${this.state.id}/trips/${response.data.trip.id}`);
 
             })
         // return this.setState({ error: '' });

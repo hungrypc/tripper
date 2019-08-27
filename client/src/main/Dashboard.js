@@ -30,6 +30,11 @@ class Dashboard extends Component {
             })
     }
 
+    clickTrip = (trip) => {
+        this.props.setTrip(trip)
+        this.props.history.push(`/users/${this.state.user.id}/trips/${trip.id}`)
+    }
+
 
     render() {
 
@@ -59,7 +64,7 @@ class Dashboard extends Component {
                     </div>
                     <div className="friends-wrapper">
                         <ButtonToolbar>
-                            <Button id="invite-button" variant='dark' onClick={() => { this.setState({ addModalShow: true }) }}>
+                            <Button id="add-trip-button" variant='dark' onClick={() => { this.setState({ addModalShow: true }) }}>
                                 Add a Trip
                             </Button>
                             <TripForm show={this.state.addModalShow} onHide={addModalClose}
@@ -72,8 +77,11 @@ class Dashboard extends Component {
                     <div className="prev-trips-wrapper">
                         {this.state.trips.map( trip => (
                             <div className="trip-block" key={trip.id}>
-                                {trip.title}
-                                {trip.location}
+                                <div>{trip.title}</div>
+                                <div>{trip.location}</div>
+                                <Button id="goto-trip" variant ='dark'                             
+                                onClick={() => {this.clickTrip(trip)}}
+                                > GO TO TRIP </Button>
                             </div>
                         ))}
                     </div>
