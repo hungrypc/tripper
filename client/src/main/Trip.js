@@ -16,6 +16,10 @@ class Trip extends Component {
 
     componentDidMount() {
 
+        if (!this.state.trip) {
+            this.props.history.push('/');
+        }
+
         // need to pull trip data with axios
 
         // USE THIS TO GET DAYS
