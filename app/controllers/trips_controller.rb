@@ -2,7 +2,8 @@ ActionController::Cookies
 class TripsController < ApplicationController
 
     def index
-        @trip = Trip.all
+    
+        @trips = User.find(params[:user_id]).trips
         
         render :json => {
             trips: @trips

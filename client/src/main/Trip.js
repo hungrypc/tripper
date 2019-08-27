@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import '../styles/Trip.css';
-// import axios from 'axios';
+import axios from 'axios';
 
 class Trip extends Component {
     constructor(props) {
@@ -15,12 +15,15 @@ class Trip extends Component {
 
     componentDidMount() {
 
-        // USE THIS TO GET TRIP ITEMS
+        // need to pull trip data with axios
 
-        // axios.get(`http://localhost:3001/users/${this.state.user.id}trips/${this.state.trip.id}`)
-        //     .then(res => {
+        // USE THIS TO GET DAYS
 
-        //     })
+        axios.get(`http://localhost:3001/users/${this.state.user.id}trips/${this.state.trip.id}/days`)
+            .then(res => {
+                 console.log('get days response', res);
+
+            })
     }
 
     render() {

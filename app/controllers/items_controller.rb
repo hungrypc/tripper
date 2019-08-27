@@ -1,10 +1,9 @@
 class ItemsController < ApplicationController
     def index
-        @trip = Trip.find(params[:trip_id])
-        @items = @trip.items
+        @items = Item.find(params[:day_id])
         
         render :json => {
-            activities: @items
+            items: @items
         }
     end
 
@@ -18,12 +17,11 @@ class ItemsController < ApplicationController
 
     def create
         @item = Item.new(user_params)
-        @item.trip = Trip.find(params[:trip_id])
 
         if @item.save!
             render :json => @item
          else
-            render :json => {errors: @item.errors }
+            render :json => { errors: @item.errors }
         end
         
     end
@@ -39,6 +37,6 @@ class ItemsController < ApplicationController
     private
 
     def user_params
-        params.require(:item).permit(:title, :location, :date, :description, :lat, :long)
+        params.require(:item).permit(:title, :location, :date, :description, :lat, :lng)
     end
 end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get :logged_in, to: 'sessions#logged_in'
 
   resources :users, only: [:show, :create, :destroy, :index] do
-    resources :trips, except: [:index] do 
+    resources :trips, only: [:index, :show, :create, :destroy] do 
       resources :days, only: [:index, :show, :create, :destroy] do
         resources :items, only: [:show, :create, :destroy, :index]
       end
