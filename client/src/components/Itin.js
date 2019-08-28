@@ -9,6 +9,7 @@ class Itin extends Component {
             user: this.props.user,
             trip: this.props.trip,
             day_id: this.props.day_id,
+            itin: []
         }
     }
 
@@ -20,9 +21,14 @@ class Itin extends Component {
         axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days/${this.state.day_id}/items`)
             .then(res => {
                 console.log('get items res', res)
+                this.setState({
+                    itin: res.data.items
+                })
             })
     }
 
+
+    //  rewrite this to handle more errors, slightly sloppy
     defaultDay = () => {
         if (this.state.day_id === 0) {
             return "Please add a day."

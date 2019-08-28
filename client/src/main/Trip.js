@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import Days from '../components/Days';
 import Itin from '../components/Itin';
+import ActivityForm from '../components/ActivityForm';
+import { Button, ButtonToolbar } from 'react-bootstrap';
 import '../styles/Trip.css';
 import axios from 'axios';
 
@@ -11,7 +13,8 @@ class Trip extends Component {
         this.state = {
             user: this.props.user,
             trip: this.props.trip,
-            day_id: 0
+            day_id: 0,
+            actModalShow: false
         }
     }
 
@@ -36,9 +39,19 @@ class Trip extends Component {
             })
     }
 
+    handleItin = (data) => {
+
+    }
+
     render() {
         // console.log('trip user', this.state.user);
         // console.log('trip data', this.state.trip);
+
+        let addModalClose = () => {
+            this.setState({
+                actModalShow: false
+            })
+        }
 
         return (
             <div className="Trip">
@@ -62,6 +75,16 @@ class Trip extends Component {
                                             <div className="trip-info-data">location: {this.state.trip.location}</div>
                                             <div className="trip-info-data">start: {this.state.trip.start_date}</div>
                                             <div className="trip-info-data">end: {this.state.trip.end_date}</div>
+                                        </div>
+                                        <div className="add-item-container">
+                                            <ButtonToolbar>
+                                                <Button id="add-trip-button" variant='dark' onClick={() => { this.setState({ actModalShow: true }) }}>
+                                                    Add ACT
+                                                </Button>
+                                                <ActivityForm show={this.state.actModalShow} onHide={addModalClose}
+                                                user={this.state.user} trip={this.state.trip} day_id={this.state.day_id}
+                                                ></ActivityForm>
+                                            </ButtonToolbar>
                                         </div>
                                     </div>
                                 </div>

@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
     end
 
     def create
-        @item = Item.new(day_id: params[:day_id])
+        @item = Item.new(user_params)
 
         if @item.save!
             render :json => { item: @item }
@@ -34,9 +34,9 @@ class ItemsController < ApplicationController
 
 
 
-    # private
+    private
 
-    # def user_params
-    #     params.require(:item).permit(:title, :location, :date, :description, :lat, :lng)
-    # end
+    def user_params
+        params.require(:item).permit(:title, :description, :day_id, :category, :lat, :lng)
+    end
 end

@@ -92,8 +92,14 @@
 .trip-info {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 50%;
     text-align: left;
+}
+
+.add-item-container {
+    display: block;
+    width: 100%;
+    height: 50%;
 }
 
 
