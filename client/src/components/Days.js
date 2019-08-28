@@ -30,7 +30,7 @@ class Days extends Component {
         axios.post(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days`)
             .then(res => {
                 console.log('day post res', res)
-                this.props.setDayid(res.data)
+                this.props.handleDay(res.data.day.id)
                 this.getDays()
             })
     }
@@ -40,9 +40,9 @@ class Days extends Component {
         return (
             <div className="Days">
                 {this.state.days.map(day => (
-                    <div key={day.id} className="day-block">DAY</div>
+                    <div key={day.id} className="day-block" onClick={() => {this.props.handleDay(day.id)}}>DAY</div>
                 ))}
-                <Button id="add-day" variant="info" onClick={() => { this.addDay() }}>ADD DAY</Button>
+                <Button id="add-day" variant="dark" onClick={() => { this.addDay() }}>ADD DAY</Button>
             </div>
         )
     }

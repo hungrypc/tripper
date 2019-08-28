@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import Days from '../components/Days';
+import Itin from '../components/Itin';
 import '../styles/Trip.css';
 import axios from 'axios';
 
@@ -8,7 +9,6 @@ class Trip extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            test: null,
             user: this.props.user,
             trip: this.props.trip,
             day_id: 0
@@ -23,26 +23,17 @@ class Trip extends Component {
 
         // need to pull trip data with axios
 
-        // USE THIS TO GET DAYS
-
     }
 
-    addDay = () => {
-        axios.post(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days`)
+    handleDay = (data) => {
+        axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days/${data}`)
             .then(res => {
-                console.log('day post res', res)
+                console.log('show day res', res)
                 this.setState({
-                    day_id: res.data.day.id                    
+                    day_id: res.data.day.id
                 })
-                console.log(this.state.day_id)
+                console.log('setstate', this.state.day_id)
             })
-    }
-
-    setDayid = (data) => {
-        this.setState({
-            day_id: data.day.id            
-        })
-        console.log('day id', this.state.day_id)
     }
 
     render() {
@@ -77,11 +68,11 @@ class Trip extends Component {
                             </div>
                             <div className="trip-right">
                                 <div className="days-container">
-                                    <Days user={this.state.user} trip={this.state.trip} setDayid={this.setDayid}></Days>
+                                    <Days user={this.state.user} trip={this.state.trip} setDayid={this.setDayid} handleDay={this.handleDay}></Days>
                                 </div>
                                 <div className="itin-container">
                                     <div className="itin">
-
+                                        <Itin user={this.state.user} trip={this.state.trip} day_id={this.state.day_id}></Itin>
                                     </div>
                                 </div>
                             </div>

@@ -1,10 +1,6 @@
 class DaysController < ApplicationController
     def index
 
-        puts "DAYS INDEX PARAMS"
-        puts params
-        puts "END"
-
         @days = Day.where(trip_id: params[:trip_id])
         
         render :json => {
@@ -13,10 +9,15 @@ class DaysController < ApplicationController
     end
 
     def show
+
+        puts "SHOW DAY PARAMS"
+        puts params
+        puts "END"
+
         @day = Day.find(params[:id])
 
         render :json => {
-            item: @day
+            day: @day
         }
     end
 

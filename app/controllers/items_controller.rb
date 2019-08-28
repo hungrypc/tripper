@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
     def index
-        @items = Item.find(params[:day_id])
+        @items = Item.where(day_id: params[:day_id])
         
         render :json => {
             items: @items
@@ -16,10 +16,10 @@ class ItemsController < ApplicationController
     end
 
     def create
-        @item = Item.new(user_params)
+        @item = Item.new(day_id: params[:day_id])
 
         if @item.save!
-            render :json => @item
+            render :json => { item: @item }
          else
             render :json => { errors: @item.errors }
         end
@@ -34,9 +34,9 @@ class ItemsController < ApplicationController
 
 
 
-    private
+    # private
 
-    def user_params
-        params.require(:item).permit(:title, :location, :date, :description, :lat, :lng)
-    end
+    # def user_params
+    #     params.require(:item).permit(:title, :location, :date, :description, :lat, :lng)
+    # end
 end
