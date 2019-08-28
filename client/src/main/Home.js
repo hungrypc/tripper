@@ -13,11 +13,12 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            user: 0,
         }
 
         this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
     }
+
 
     handleSuccessfulAuth(data) {
         this.props.handleLogin(data)

@@ -15,6 +15,7 @@ class Itin extends Component {
 
     componentDidMount() {
         this.getItems();
+        // this.props.handleItin();
     }
 
     getItems = () => {
@@ -24,25 +25,31 @@ class Itin extends Component {
                 this.setState({
                     itin: res.data.items
                 })
+
             })
     }
 
 
     //  rewrite this to handle more errors, slightly sloppy
-    defaultDay = () => {
-        if (this.state.day_id === 0) {
-            return "Please add a day."
-        } else {
-            return "Please add to the Itinerary."
-        }
-    }
+    // defaultDay = () => {
+    //     if (this.state.day_id === 0) {
+    //         return "Please add a day."
+    //     } else {
+    //         return "Please add to the Itinerary."
+    //     }
+    // }
 
     render() {
-
+        console.log('itin state', this.state)
 
         return (
-            <div className="Itin">
-                {this.defaultDay()}
+            <div className="Itin-main">
+                {this.state.itin.map(item => (
+                    <div key={item.id} className="item-block">
+                        <div>{item.title}</div>
+                        <div>{item.description}</div>
+                    </div>
+                ))}
             </div>
         )
     }

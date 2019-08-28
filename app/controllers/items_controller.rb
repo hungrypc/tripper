@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
     def index
+        puts "item index params"
+        puts params
+        puts "END"
+
         @items = Item.where(day_id: params[:day_id])
         
         render :json => {

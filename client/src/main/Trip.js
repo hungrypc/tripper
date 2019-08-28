@@ -14,6 +14,7 @@ class Trip extends Component {
             user: this.props.user,
             trip: this.props.trip,
             day_id: 0,
+            itin: [],
             actModalShow: false
         }
     }
@@ -25,22 +26,29 @@ class Trip extends Component {
         }
 
         // need to pull trip data with axios
-
     }
 
     handleDay = (data) => {
         axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days/${data}`)
             .then(res => {
-                console.log('show day res', res)
+                // console.log('show day res', res)
                 this.setState({
                     day_id: res.data.day.id
                 })
-                console.log('setstate', this.state.day_id)
+                // console.log('setstate', this.state.day_id)
+                
+                this.handleItin(res.data.day.id);
             })
     }
 
     handleItin = (data) => {
-
+        axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days/${data}/items`)
+            .then(res => {
+                console.log('handleItin res', res)
+                this.setState({
+                    itin: res.data.items
+                })
+            })
     }
 
     render() {
@@ -95,7 +103,8 @@ class Trip extends Component {
                                 </div>
                                 <div className="itin-container">
                                     <div className="itin">
-                                        <Itin user={this.state.user} trip={this.state.trip} day_id={this.state.day_id}></Itin>
+                                        <Itin user={this.state.user} trip={this.state.trip} day_id={this.state.day_id} itin={this.state.itin}
+                                        handleItin={this.handleItin}></Itin>
                                     </div>
                                 </div>
                             </div>
