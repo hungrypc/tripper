@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
+import Days from '../components/Days';
 import '../styles/Trip.css';
 import axios from 'axios';
 
@@ -10,7 +11,7 @@ class Trip extends Component {
             test: null,
             user: this.props.user,
             trip: this.props.trip,
-            days: []
+            day_id: 0
         }
     }
 
@@ -24,16 +25,29 @@ class Trip extends Component {
 
         // USE THIS TO GET DAYS
 
-        axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days`)
-            .then(res => {
-                 console.log('get days response', res);
+    }
 
+    addDay = () => {
+        axios.post(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days`)
+            .then(res => {
+                console.log('day post res', res)
+                this.setState({
+                    day_id: res.data.day.id                    
+                })
+                console.log(this.state.day_id)
             })
     }
 
+    setDayid = (data) => {
+        this.setState({
+            day_id: data.day.id            
+        })
+        console.log('day id', this.state.day_id)
+    }
+
     render() {
-        console.log('trip user', this.state.user);
-        console.log('trip data', this.state.trip);
+        // console.log('trip user', this.state.user);
+        // console.log('trip data', this.state.trip);
 
         return (
             <div className="Trip">
@@ -63,7 +77,7 @@ class Trip extends Component {
                             </div>
                             <div className="trip-right">
                                 <div className="days-container">
-
+                                    <Days user={this.state.user} trip={this.state.trip} setDayid={this.setDayid}></Days>
                                 </div>
                                 <div className="itin-container">
                                     <div className="itin">

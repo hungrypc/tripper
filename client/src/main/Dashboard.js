@@ -22,11 +22,11 @@ class Dashboard extends Component {
 
         axios.get(`http://localhost:3001/users/${this.state.user.id}/trips`)
             .then(res => {
-                console.log('get trips index response', res);
+                // console.log('get trips index response', res);
                 this.setState({
                     trips: res.data.trips
                 })
-                console.log('dash trip state', this.state.trips)
+                // console.log('dash trip state', this.state.trips)
             })
     }
 

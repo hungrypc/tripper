@@ -24,9 +24,14 @@ class DaysController < ApplicationController
         @trip = Trip.find(params[:trip_id])
 
         if(@trip)
-            @day = Day.new()
+            @day = Day.new(trip_id: params[:trip_id])
 
-            render :json => { message: "day created" }
+            if(@day.save)
+                render :json => { 
+                    message: "day created", 
+                    day: @day
+                }
+            end
         end
     end
 
