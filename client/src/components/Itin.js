@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Button } from 'react-bootstrap';
-import axios from 'axios';
+// import axios from 'axios';
 
 class Itin extends Component {
     constructor(props) {
@@ -9,26 +9,17 @@ class Itin extends Component {
             user: this.props.user,
             trip: this.props.trip,
             day_id: this.props.day_id,
-            itin: []
+            itin: this.props.itin
         }
     }
 
-    componentDidMount() {
-        this.getItems();
-        // this.props.handleItin();
-    }
-
-    getItems = () => {
-        axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days/${this.state.day_id}/items`)
-            .then(res => {
-                console.log('get items res', res)
-                this.setState({
-                    itin: res.data.items
-                })
-
+    componentWillReceiveProps(nextprops) {
+        if (this.state.itin !== nextprops.itin) {
+            this.setState({
+                itin: nextprops.itin
             })
+        }
     }
-
 
     //  rewrite this to handle more errors, slightly sloppy
     // defaultDay = () => {

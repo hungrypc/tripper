@@ -28,7 +28,8 @@
     align-content: center;
     width: 100%;
     height: 35%;
-    background-image: url("https://images.unsplash.com/photo-1548022401-6b11ed578cc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3750&q=80");
+    border: 1px solid black;
+    /* background-image: url("https://images.unsplash.com/photo-1548022401-6b11ed578cc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3750&q=80"); */
     background-size: 100%;
     background-position: bottom;
     background-attachment: fixed;
@@ -135,10 +136,24 @@
     height: 90%;
     padding: 2%;
     border: 1px solid black;
+    white-space: nowrap;
+    overflow-y: scroll;
 }
 
 .itin {
     display: block;
     width: 100%;
     height: 100%;
+}
+
+.item-block {
+    height: 100px;
+    width: 100%;
+    display: block;
+    text-align: left;
+    border: 1px solid #aaa;
+    border-radius: 12px;
+    margin: 12px 0;
+    padding: 20px;
+    font-size: 1.2rem;
 }

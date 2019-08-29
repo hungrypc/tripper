@@ -28,6 +28,7 @@ class Trip extends Component {
         // need to pull trip data with axios
     }
 
+    // gets day and sets day_id state to that day, pulls itin via that day
     handleDay = (data) => {
         axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days/${data}`)
             .then(res => {
@@ -44,7 +45,7 @@ class Trip extends Component {
     handleItin = (data) => {
         axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days/${data}/items`)
             .then(res => {
-                console.log('handleItin res', res)
+                // console.log('handleItin res', res)
                 this.setState({
                     itin: res.data.items
                 })
@@ -80,17 +81,18 @@ class Trip extends Component {
                                     </div>
                                     <div className="trip-info-container">
                                         <div className="trip-info">
-                                            <div className="trip-info-data">location: {this.state.trip.location}</div>
-                                            <div className="trip-info-data">start: {this.state.trip.start_date}</div>
-                                            <div className="trip-info-data">end: {this.state.trip.end_date}</div>
+                                            <div className="trip-info-data"><strong>location:</strong> {this.state.trip.location}</div>
+                                            <div className="trip-info-data"><strong>start:</strong> {this.state.trip.start_date}</div>
+                                            <div className="trip-info-data"><strong>end:</strong> {this.state.trip.end_date}</div>
                                         </div>
                                         <div className="add-item-container">
                                             <ButtonToolbar>
                                                 <Button id="add-trip-button" variant='dark' onClick={() => { this.setState({ actModalShow: true }) }}>
-                                                    Add ACT
+                                                    Add Item
                                                 </Button>
                                                 <ActivityForm show={this.state.actModalShow} onHide={addModalClose}
                                                 user={this.state.user} trip={this.state.trip} day_id={this.state.day_id}
+                                                handleItin={this.handleItin}
                                                 ></ActivityForm>
                                             </ButtonToolbar>
                                         </div>
@@ -99,7 +101,8 @@ class Trip extends Component {
                             </div>
                             <div className="trip-right">
                                 <div className="days-container">
-                                    <Days user={this.state.user} trip={this.state.trip} setDayid={this.setDayid} handleDay={this.handleDay}></Days>
+                                    <Days user={this.state.user} trip={this.state.trip} setDayid={this.setDayid} 
+                                    handleDay={this.handleDay} handleItin={this.handleItin}></Days>
                                 </div>
                                 <div className="itin-container">
                                     <div className="itin">

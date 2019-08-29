@@ -40,7 +40,11 @@ class ActivityForm extends Component {
             })
             .then((res) => {
                 console.log('post item res', res)
-
+                this.setState({
+                    title: '',
+                    description: ''
+                })
+                this.props.handleItin(this.props.day_id)
             })
 
     }
