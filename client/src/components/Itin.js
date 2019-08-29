@@ -6,9 +6,6 @@ class Itin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user,
-            trip: this.props.trip,
-            day_id: this.props.day_id,
             itin: this.props.itin
         }
     }
@@ -37,7 +34,7 @@ class Itin extends Component {
             <div className="Itin-main">
                 {this.state.itin.map(item => (
                     <div key={item.id} className="item-block">
-                        <div className="item-block-icon"><i class="fas fa-map-marked-alt"></i></div>
+                        <div className="item-block-icon"><i className="fas fa-map-marked-alt"></i></div>
                         <div className="item-block-info">
                             <div className="item-block-title">{item.title}</div>
                             <div className="item-block-desc">{item.description}</div>
