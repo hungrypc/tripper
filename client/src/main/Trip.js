@@ -6,6 +6,7 @@ import ActivityForm from '../components/ActivityForm';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import '../styles/Trip.css';
 import axios from 'axios';
+import moment from 'moment';
 
 class Trip extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class Trip extends Component {
 
     componentDidMount() {
 
-        if (!this.state.trip) {
+        if (!this.state.trip || !this.state.user) {
             this.props.history.push('/');
         }
 
@@ -82,8 +83,8 @@ class Trip extends Component {
                                     <div className="trip-info-container">
                                         <div className="trip-info">
                                             <div className="trip-info-data"><strong>location:</strong> {this.state.trip.location}</div>
-                                            <div className="trip-info-data"><strong>start:</strong> {this.state.trip.start_date}</div>
-                                            <div className="trip-info-data"><strong>end:</strong> {this.state.trip.end_date}</div>
+                                            <div className="trip-info-data"><strong>start:</strong> {moment(this.state.trip.start_date.toString()).format('Do MMM YYYY')}</div>
+                                            <div className="trip-info-data"><strong>end: </strong> {moment(this.state.trip.end_date.toString()).format('Do MMM YYYY')}</div>
                                         </div>
                                         <div className="add-item-container">
                                             <ButtonToolbar>

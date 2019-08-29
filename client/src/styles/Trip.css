@@ -56,7 +56,7 @@
     display: block;
     width: 100%;
     height: 50%;
-    border: 1px solid black;
+    border: 1px solid #aaa;
 }
 
 /* LEFT BLOCK */
@@ -80,7 +80,7 @@
     display: block;
     width: 100%;
     height: 50%;
-    border: 1px solid black;
+    border: 1px solid #aaa;
 }
 
 .trip-info-container {
@@ -116,7 +116,7 @@
     display: block;
     width: 100%;
     height: 10%;
-    padding: 1.2%;
+    padding: 1.1%;
     white-space: nowrap;
     overflow-x: scroll;
     border: 1px solid black;
@@ -127,14 +127,28 @@
     height: 100%;
     display: inline-block;
     margin: 0 10px;
+    padding: 0.5%;
     border: 1px solid black;
+    border-radius: 15px;
+    font-size: 1.2rem;
+}
+
+.day-block-plus {
+    width: 50px;
+    height: 100%;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 0.5%;
+    border: 1px solid black;
+    border-radius: 15px;
+    font-size: 1.2rem;
 }
 
 .itin-container {
     display: block;
     width: 100%;
     height: 90%;
-    padding: 2%;
+    padding: 1% 2%;
     border: 1px solid black;
     white-space: nowrap;
     overflow-y: scroll;
@@ -149,11 +163,41 @@
 .item-block {
     height: 100px;
     width: 100%;
-    display: block;
+    display: flex;
     text-align: left;
     border: 1px solid #aaa;
     border-radius: 12px;
-    margin: 12px 0;
-    padding: 20px;
-    font-size: 1.2rem;
+    margin: 15px 0;
+    padding: 15px 25px;
+    font-size: 1.5rem;
+}
+
+.item-block-icon {
+    height: 100%;
+    width: 10%;
+    display: inline-block;
+    padding-left: 10px;
+    font-size: 2.5rem;
+}
+
+.item-block-info {
+    height: 100%;
+    width: 90%;
+    display: inline-block;
+    padding-left: 20px
+}
+
+.item-block-title {
+    height: 50%;
+    width: 100%;
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.item-block-desc {
+    height: 50%;
+    width: 100%;
+    display: block;
+    font-size: 1rem;
 }

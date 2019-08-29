@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import axios from 'axios';
 
 class Days extends Component {
@@ -43,7 +42,7 @@ class Days extends Component {
                 {this.state.days.map(day => (
                     <div key={day.id} className="day-block" onClick={() => {this.props.handleDay(day.id)}}>DAY</div>
                 ))}
-                <Button id="add-day" variant="dark" onClick={() => { this.addDay() }}>ADD DAY</Button>
+                <div id="add-day" className="day-block-plus" onClick={() => { this.addDay() }}>+</div>
             </div>
         )
     }

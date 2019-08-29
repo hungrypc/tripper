@@ -31,14 +31,17 @@ class Itin extends Component {
     // }
 
     render() {
-        console.log('itin state', this.state)
+        // console.log('itin state', this.state)
 
         return (
             <div className="Itin-main">
                 {this.state.itin.map(item => (
                     <div key={item.id} className="item-block">
-                        <div>{item.title}</div>
-                        <div>{item.description}</div>
+                        <div className="item-block-icon"><i class="fas fa-map-marked-alt"></i></div>
+                        <div className="item-block-info">
+                            <div className="item-block-title">{item.title}</div>
+                            <div className="item-block-desc">{item.description}</div>
+                        </div>                        
                     </div>
                 ))}
             </div>
