@@ -6,6 +6,8 @@
     width: 100%;
     height: 94vh;
     margin-top: 6vh;
+    background-color: #eeeeee;
+    overflow: hidden;
 }
 
 .trip-container {
@@ -28,11 +30,11 @@
     align-content: center;
     width: 100%;
     height: 35%;
-    border: 1px solid black;
     /* background-image: url("https://images.unsplash.com/photo-1548022401-6b11ed578cc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3750&q=80"); */
     background-size: 100%;
     background-position: bottom;
     background-attachment: fixed;
+    background-color: white;
 }
 
 .titlecard-info {
@@ -67,7 +69,9 @@
     height: 100%;
     padding: 3%;
     vertical-align: top;
-    border: 1px solid black;
+    background-color: white;
+    border-right: 1px solid #aaa;
+    border-top: 1px solid #aaa;
 }
 
 .trip-left-container {
@@ -80,7 +84,12 @@
     display: block;
     width: 100%;
     height: 50%;
-    border: 1px solid #aaa;
+    /* border: 1px solid #aaa; */
+}
+
+.map {
+    height: 100%;
+    width: 100%;
 }
 
 .trip-info-container {
@@ -110,6 +119,7 @@
     display: inline-block;
     width: 65%;
     height: 100%;
+    background-color: white;
 }
 
 .days-container {
@@ -119,7 +129,9 @@
     padding: 1.1%;
     white-space: nowrap;
     overflow-x: scroll;
-    border: 1px solid black;
+    background-color: #dce3e4;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
 }
 
 .day-block {
@@ -128,9 +140,10 @@
     display: inline-block;
     margin: 0 10px;
     padding: 0.5%;
-    border: 1px solid black;
+    background-color: white;
+    /* border: 1px solid black; */
     border-radius: 15px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
 }
 
@@ -151,7 +164,7 @@
     width: 100%;
     height: 90%;
     padding: 1% 3%;
-    border: 1px solid black;
+    background-color: white;
     white-space: nowrap;
     overflow-y: scroll;
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import Days from '../components/Days';
 import Itin from '../components/Itin';
+import Map from '../components/Map';
 import ActivityForm from '../components/ActivityForm';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import '../styles/Trip.css';
@@ -18,6 +19,10 @@ class Trip extends Component {
             itin: [],
             actModalShow: false
         }
+    }
+
+    componentWillMount(){
+        
     }
 
     componentDidMount() {
@@ -38,7 +43,7 @@ class Trip extends Component {
                     day_id: res.data.day.id
                 })
                 // console.log('setstate', this.state.day_id)
-                
+
                 this.handleItin(res.data.day.id);
             })
     }
@@ -52,6 +57,7 @@ class Trip extends Component {
                 })
             })
     }
+
 
     render() {
         // console.log('trip user', this.state.user);
@@ -78,7 +84,7 @@ class Trip extends Component {
                             <div className="trip-left">
                                 <div className="trip-left-container">
                                     <div className="map-container">
-
+                                        <Map></Map>
                                     </div>
                                     <div className="trip-info-container">
                                         <div className="trip-info">
@@ -92,8 +98,8 @@ class Trip extends Component {
                                                     Add Item
                                                 </Button>
                                                 <ActivityForm show={this.state.actModalShow} onHide={addModalClose}
-                                                user={this.state.user} trip={this.state.trip} day_id={this.state.day_id}
-                                                handleItin={this.handleItin}
+                                                    user={this.state.user} trip={this.state.trip} day_id={this.state.day_id}
+                                                    handleItin={this.handleItin}
                                                 ></ActivityForm>
                                             </ButtonToolbar>
                                         </div>
@@ -102,13 +108,13 @@ class Trip extends Component {
                             </div>
                             <div className="trip-right">
                                 <div className="days-container">
-                                    <Days user={this.state.user} trip={this.state.trip} setDayid={this.setDayid} 
-                                    handleDay={this.handleDay} handleItin={this.handleItin}></Days>
+                                    <Days user={this.state.user} trip={this.state.trip} setDayid={this.setDayid}
+                                        handleDay={this.handleDay} handleItin={this.handleItin}></Days>
                                 </div>
                                 <div className="itin-container">
                                     <div className="itin">
                                         <Itin user={this.state.user} trip={this.state.trip} day_id={this.state.day_id} itin={this.state.itin}
-                                        handleItin={this.handleItin}></Itin>
+                                            handleItin={this.handleItin}></Itin>
                                     </div>
                                 </div>
                             </div>

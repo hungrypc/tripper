@@ -10,6 +10,8 @@ In one terminal, run `bin/rails s` to run the server.
 
 In the other terminal, `cd` into `client`. Then run `npm start` and go to `localhost:3000` in your browser.
 
+
+
 ## below is extra info from the boilerplate I forked to make this
 
 Courtesy of Nima (nima@lighthouselabs.com).

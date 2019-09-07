@@ -2,6 +2,7 @@
     display: block;
     height: 94vh;
     width: 100%;
+    background-color: #EEEEEE;
 }
 
 /* TOP WRAPPER */
@@ -16,13 +17,13 @@
 }
 
 .profile-wrapper {
-    border: 1px solid #aaa;
     border-radius: 12px;
     float: left;
     width: 55%;
     height: 100%;
     margin: 0 auto;
     padding: 4%;
+    background-color: white;
 }
 
 .dash-profile-picture-container {
@@ -63,11 +64,11 @@
 }
 
 .friends-wrapper {
-    border: 1px solid #aaa;
     border-radius: 12px;
     float: right;
     width: 40%;
     height: 100%;
+    background-color: white;
 }
 
 
@@ -87,11 +88,11 @@
 
 .prev-trips-wrapper {
     display: block;
-    border: 1px solid #aaa;
     border-radius: 12px;
     height: 100%;
     width: 100%;
     padding: 3%;
+    background-color: white;
     white-space: nowrap;
     overflow-x: scroll;
 }
