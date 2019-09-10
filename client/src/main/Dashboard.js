@@ -77,11 +77,12 @@ class Dashboard extends Component {
                     <div className="prev-trips-wrapper">
                         {this.state.trips.map( trip => (
                             <div className="trip-block" key={trip.id}>
+                                <div className="trip-block-img"></div>
                                 <div>{trip.title}</div>
                                 <div>{trip.location}</div>
-                                <Button id="goto-trip" variant ='dark'                             
+                                <div id="goto-trip"                            
                                 onClick={() => {this.clickTrip(trip)}}
-                                > GO TO TRIP </Button>
+                                > View </div>
                             </div>
                         ))}
                     </div>
