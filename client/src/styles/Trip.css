@@ -13,7 +13,11 @@
 .trip-container {
     display: block;
     width: 80%;
-    height: 100%;
+    height: 95%;
+    margin-top: 1.3%;
+    border-radius: 12px;
+    box-shadow: rgb(191, 191, 191) 0px 4px 4px;
+    overflow: hidden;
 }
 
 .trip-bottom {
@@ -30,7 +34,7 @@
     align-content: center;
     width: 100%;
     height: 35%;
-    /* background-image: url("https://images.unsplash.com/photo-1548022401-6b11ed578cc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3750&q=80"); */
+    background-image: url("https://images.unsplash.com/photo-1548022401-6b11ed578cc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3750&q=80");
     background-size: 100%;
     background-position: bottom;
     background-attachment: fixed;
@@ -41,40 +45,50 @@
     display: block;
     width: 50%;
     height: 60%;
-    margin-top: 7%;
+    margin-top: 6%;
 }
 
 .titlecard-title {
     display: block;
     width: 100%;
-    height: 50%;
+    height: 40%;
     font-size: 3rem;
     font-weight: 700;
     color: white;
     text-shadow: black 0.1em 0.1em 0.2em;
 }
 
+.titlecard-details {
+    display: block;
+    width: 100%;
+    height: 10%;
+    font-size: 1.1rem;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    margin-bottom: 1%;
+}
+
 .titlecard-users {
     display: block;
     width: 100%;
-    height: 50%;
+    height: 40%;
+    margin-top: 2%;
     border: 1px solid #aaa;
 }
 
-/* LEFT BLOCK */
+/* RIGHT BLOCK */
 
-.trip-left {
+.trip-right {
     display: inline-block;
-    width: 35%;
+    width: 45%;
     height: 100%;
-    padding: 3%;
+    /* padding: 3%; */
     vertical-align: top;
     background-color: white;
-    border-right: 1px solid #aaa;
-    border-top: 1px solid #aaa;
+    /* border-right: 1px solid #dadde1; */
 }
 
-.trip-left-container {
+.trip-right-container {
     display: block;
     width: 100%;
     height: 100%;
@@ -83,7 +97,7 @@
 .map-container {
     display: block;
     width: 100%;
-    height: 50%;
+    height: 100%;
     /* border: 1px solid #aaa; */
 }
 
@@ -95,7 +109,7 @@
 .trip-info-container {
     display: block;
     width: 100%;
-    height: 50%;
+    height: 30%;
     padding: 5%;
 }
 
@@ -106,18 +120,18 @@
     text-align: left;
 }
 
-.add-item-container {
-    display: block;
-    width: 100%;
-    height: 50%;
+#add-item-button {
+    position: absolute;
+    bottom: 5%;
+    left: 46%;
 }
 
 
-/* RIGHT BLOCK */
+/* LEFT BLOCK */
 
-.trip-right {
+.trip-left {
     display: inline-block;
-    width: 65%;
+    width: 55%;
     height: 100%;
     background-color: white;
 }
@@ -129,9 +143,8 @@
     padding: 1.1%;
     white-space: nowrap;
     overflow-x: scroll;
-    background-color: #dce3e4;
-    border-top: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
+    /* background-color: #dce3e4; */
+    border-bottom: 1px solid #dadde1;
 }
 
 .day-block {
@@ -140,10 +153,12 @@
     display: inline-block;
     margin: 0 10px;
     padding: 0.5%;
-    background-color: white;
+    /* background-color: #f5f6f7; */
+    background-color: #eeeeee;
     /* border: 1px solid black; */
     border-radius: 15px;
     font-size: 1.1rem;
+    font-weight: 700;
     cursor: pointer;
 }
 
@@ -153,9 +168,11 @@
     display: inline-block;
     margin: 0 10px;
     padding: 0.5%;
-    border: 1px solid black;
+    /* background-color: #f5f6f7; */
+    background-color: #eeeeee;
     border-radius: 15px;
     font-size: 1.2rem;
+    font-weight: 700;
     cursor: pointer;
 }
 
@@ -164,7 +181,6 @@
     width: 100%;
     height: 90%;
     padding: 1% 3%;
-    background-color: white;
     white-space: nowrap;
     overflow-y: scroll;
 }
@@ -180,7 +196,9 @@
     width: 100%;
     display: flex;
     text-align: left;
-    border: 1px solid #aaa;
+    border: 1px solid #eee;
+    background-color: white;
+    box-shadow: rgb(211, 211, 211) 0px 4px 4px;
     border-radius: 12px;
     margin: 15px 0;
     padding: 15px 25px;

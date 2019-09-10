@@ -202,7 +202,7 @@ class Map extends Component {
                     bootstrapURLKeys={{ key: 'AIzaSyCElThC6F3OHNpkBBWu-6fHLzH9GT-p1A4' }}
                     defaultCenter={ this.state.staticCenter }
                     center={this.state.center}
-                    defaultZoom={5}
+                    defaultZoom={9}
                     onClick={this.addMarker}
                     // onTilesLoaded={({map, maps}) => this.setMarkers(map, maps)}
                     // onGoogleApiLoaded={({map, maps}) => this.setMarkers(map, maps)}

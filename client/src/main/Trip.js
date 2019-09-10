@@ -21,8 +21,8 @@ class Trip extends Component {
         }
     }
 
-    componentWillMount(){
-        
+    componentWillMount() {
+
     }
 
     componentDidMount() {
@@ -77,36 +77,13 @@ class Trip extends Component {
                         <div className="trip-titlecard">
                             <div className="titlecard-info">
                                 <div className="titlecard-title">{this.state.trip.title}</div>
+                                <div className="titlecard-details">{moment(this.state.trip.start_date.toString()).format('Do MMM YYYY')} ~ {moment(this.state.trip.end_date.toString()).format('Do MMM YYYY')}</div>
+                                <div className="titlecard-details">{this.state.trip.location}</div>
                                 <div className="titlecard-users"></div>
                             </div>
                         </div>
                         <div className="trip-bottom">
                             <div className="trip-left">
-                                <div className="trip-left-container">
-                                    <div className="map-container">
-                                        <Map></Map>
-                                    </div>
-                                    <div className="trip-info-container">
-                                        <div className="trip-info">
-                                            <div className="trip-info-data"><strong>location:</strong> {this.state.trip.location}</div>
-                                            <div className="trip-info-data"><strong>start:</strong> {moment(this.state.trip.start_date.toString()).format('Do MMM YYYY')}</div>
-                                            <div className="trip-info-data"><strong>end: </strong> {moment(this.state.trip.end_date.toString()).format('Do MMM YYYY')}</div>
-                                        </div>
-                                        <div className="add-item-container">
-                                            <ButtonToolbar>
-                                                <Button id="add-trip-button" variant='dark' onClick={() => { this.setState({ actModalShow: true }) }}>
-                                                    Add Item
-                                                </Button>
-                                                <ActivityForm show={this.state.actModalShow} onHide={addModalClose}
-                                                    user={this.state.user} trip={this.state.trip} day_id={this.state.day_id}
-                                                    handleItin={this.handleItin}
-                                                ></ActivityForm>
-                                            </ButtonToolbar>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="trip-right">
                                 <div className="days-container">
                                     <Days user={this.state.user} trip={this.state.trip} setDayid={this.setDayid}
                                         handleDay={this.handleDay} handleItin={this.handleItin}></Days>
@@ -116,6 +93,30 @@ class Trip extends Component {
                                         <Itin user={this.state.user} trip={this.state.trip} day_id={this.state.day_id} itin={this.state.itin}
                                             handleItin={this.handleItin}></Itin>
                                     </div>
+                                    <ButtonToolbar>
+                                        <Button id="add-item-button" variant='dark' onClick={() => { this.setState({ actModalShow: true }) }}>
+                                            Add Item
+                                        </Button>
+                                        <ActivityForm show={this.state.actModalShow} onHide={addModalClose}
+                                            user={this.state.user} trip={this.state.trip} day_id={this.state.day_id}
+                                            handleItin={this.handleItin}
+                                        ></ActivityForm>
+                                    </ButtonToolbar>
+                                </div>
+                            </div>
+
+                            <div className="trip-right">
+                                <div className="trip-right-container">
+                                    <div className="map-container">
+                                        <Map></Map>
+                                    </div>
+                                    {/* <div className="trip-info-container">
+                                        <div className="trip-info">
+                                            <div className="trip-info-data"><strong>location:</strong> {this.state.trip.location}</div>
+                                            <div className="trip-info-data"><strong>start:</strong> {moment(this.state.trip.start_date.toString()).format('Do MMM YYYY')}</div>
+                                            <div className="trip-info-data"><strong>end: </strong> {moment(this.state.trip.end_date.toString()).format('Do MMM YYYY')}</div>
+                                        </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
