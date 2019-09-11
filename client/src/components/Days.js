@@ -39,8 +39,8 @@ class Days extends Component {
 
         return (
             <div className="Days">
-                {this.state.days.map(day => (
-                    <div key={day.id} className="day-block" onClick={() => {this.props.handleDay(day.id)}}>DAY</div>
+                {this.state.days.map((day, i) => (
+                    <div key={day.id} className="day-block" onClick={() => {this.props.handleDay(day.id)}}>DAY {i + 1}</div>
                 ))}
                 <div id="add-day" className="day-block-plus" onClick={() => { this.addDay() }}>+</div>
             </div>
