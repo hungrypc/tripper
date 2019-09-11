@@ -138,22 +138,6 @@ class Map extends Component {
     //             position: {lat: Number(activity.lat), lng: Number(activity.long)}
     //         }))
     //     }
-    //     for (let travel of this.props.travels){
-    //         this.state.markers.push(new this.state.maps.Marker({
-    //             map: this.state.map,
-    //             title: 'test',
-    //             position: {lat: Number(travel.lat), lng: Number(travel.long)}
-    //         }))
-    //     }
-    //     for (let accommodation of this.props.accommodations){
-    //         // console.log('accom lat', accommodation.lat)
-    //         // console.log(this.state.markers)
-    //         this.state.markers.push(new this.state.maps.Marker({
-    //             map: this.state.map,
-    //             title: 'place',
-    //             position: {lat: Number(accommodation.lat), lng: Number(accommodation.long)}
-    //         }))
-    //     }
     //     this.initAutocomplete(this.reference);
     // }
 
@@ -163,22 +147,6 @@ class Map extends Component {
     //             map: this.state.map,
     //             title: 'test',
     //             position: {lat: Number(activity.lat), lng: Number(activity.long)}
-    //         }))
-    //     }
-    //     for (let travel of this.props.travels){
-    //         this.state.markers.push(new this.state.maps.Marker({
-    //             map: this.state.map,
-    //             title: 'test',
-    //             position: {lat: Number(travel.lat), lng: Number(travel.long)}
-    //         }))
-    //     }
-    //     for (let accommodation of this.props.accommodations){
-    //         // console.log('accom lat', accommodation.lat)
-    //         // console.log(this.state.markers)
-    //         this.state.markers.push(new this.state.maps.Marker({
-    //             map: this.state.map,
-    //             title: 'place',
-    //             position: {lat: Number(accommodation.lat), lng: Number(accommodation.long)}
     //         }))
     //     }
     // }

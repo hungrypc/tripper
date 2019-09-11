@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LocationSearch from '../components/LocationSearch';
 import { Modal } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import "../../node_modules/react-datetime/css/react-datetime.css";
@@ -81,7 +82,9 @@ class TripForm extends Component {
     };
 
 
+
     render() {
+
 
         return (
             <div>
@@ -98,6 +101,8 @@ class TripForm extends Component {
                                 <input className="form-control" type="text" name="title" placeholder="Title" autoComplete="off" value={this.state.title} onChange={this.handleChange} required />
                                 <br></br>
                                 <input className="form-control" type="text" name="location" placeholder="Where To?" autoComplete="off" value={this.state.location} onChange={this.handleChange} required />
+                                <br></br>
+                                <LocationSearch></LocationSearch>
                                 <br></br>
                                 <DateTime inputProps={{
                                     className: 'form-control',
