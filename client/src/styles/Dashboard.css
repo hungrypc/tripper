@@ -136,3 +136,29 @@
     cursor: pointer;
     margin-top: 4%;
 }
+
+.trip-form {
+    width: 250px;
+}
+
+.autocomplete-dropdown-container {
+    width: 250px;
+    max-height: 100px;
+    overflow: scroll;
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #eee;
+}
+
+.suggestion-container {
+    max-width: 100%;
+}
+
+.suggestion-box {
+    max-width: 100%;
+    /* padding: 5%; */
+}
+
+.suggestion-desc {
+    padding: 5%;
+}

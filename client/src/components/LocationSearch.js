@@ -31,10 +31,10 @@ class LocationSearch extends Component {
                 searchOptions={{types: ['(regions)']}}
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                    <div>
+                    <div className="suggestion-container">
                         <input 
                             {...getInputProps({
-                                placeholder: 'Search Places ...',
+                                placeholder: 'Where To?',
                                 className: 'location-search-input form-control',
                             })}
                         />
@@ -49,13 +49,13 @@ class LocationSearch extends Component {
                                     ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                                     : { backgroundColor: '#ffffff', cursor: 'pointer' };
                                 return (
-                                    <div
+                                    <div className="suggestion-box"
                                         {...getSuggestionItemProps(suggestion, {
                                             className,
                                             style,
                                         })}
                                     >
-                                        <span>{suggestion.description}</span>
+                                        <span className="suggestion-desc">{suggestion.description}</span>
                                     </div>
                                 );
                             })}
