@@ -48,7 +48,7 @@ class Dashboard extends Component {
 
         return (
             <div className="dashboard">
-                <Navbar />
+                <Navbar user={this.state.user}/>
                 <div className="top-wrapper">
                     <div className="profile-wrapper">
                         <div className="dash-profile-picture-container">

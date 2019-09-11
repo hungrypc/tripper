@@ -71,7 +71,7 @@ class Trip extends Component {
 
         return (
             <div className="Trip">
-                <Navbar />
+                <Navbar user={this.state.user}/>
                 <div className="trip-wrapper">
                     <div className="trip-container">
                         <div className="trip-titlecard">

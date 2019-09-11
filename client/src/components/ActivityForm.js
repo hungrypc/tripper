@@ -32,17 +32,18 @@ class ActivityForm extends Component {
         // console.log('before post props', this.props)
 
         axios.post(`http://localhost:3001/users/${this.props.user.id}/trips/${this.props.trip.id}/days/${this.props.day_id}/items`,
-            {                
+            {
                 title: this.state.title,
                 description: this.state.description,
-                category: 'activity',
+                category: this.state.category,
                 day_id: this.props.day_id
             })
             .then((res) => {
                 // console.log('post item res', res)
                 this.setState({
                     title: '',
-                    description: ''
+                    description: '',
+                    category: 'activity'
                 })
                 this.props.handleItin(this.props.day_id)
             })
@@ -73,7 +74,13 @@ class ActivityForm extends Component {
                             <form className="trip-form" onSubmit={this.handleSubmit}>
                                 <input className="form-control" type="text" name="title" placeholder="Title" autoComplete="off" value={this.state.title} onChange={this.handleChange} required />
                                 <br></br>
-                                <input className="form-control" type="text" name="description" placeholder="Description" autoComplete="off" value={this.state.description} onChange={this.handleChange} required />                                
+                                <input className="form-control" type="text" name="description" placeholder="Description" autoComplete="off" value={this.state.description} onChange={this.handleChange} required />
+                                <br></br>
+                                <select className="form-control" id="exampleFormControlSelect1" value={this.state.category} name="category" onChange={this.handleChange}>
+                                    <option value="activity">Activity</option>
+                                    <option value="transport">Transport</option>
+                                    <option value="accomodation">Accomodation</option>
+                                </select>
                                 <br></br>
                                 <button type="submit" className="btn btn-dark">Continue</button>
                             </form>

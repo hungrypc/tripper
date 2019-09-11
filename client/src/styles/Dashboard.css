@@ -86,7 +86,7 @@
     width: 75%;
     height: 45vh;
     margin: 0 auto;
-    padding: 2% 5% ;
+    padding: 2% 5%;
 }
 
 .prev-trips-wrapper {
@@ -120,8 +120,8 @@
 
 #add-trip-button {
     position: absolute;
-    right: 19%;
-    bottom: 20%;
+    right: 18.5%;
+    bottom: 10%;
 }
 
 #goto-trip {

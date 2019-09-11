@@ -27,6 +27,16 @@ class Itin extends Component {
     //     }
     // }
 
+    handleIcon(category) {
+        if (category === "activity") {
+            return (<i className="fas fa-map-marked-alt"></i>)
+        } else if (category === "transport") {
+            return (<i className="fas fa-car"></i>)
+        } else if (category === "accomodation") {
+            return (<i className="fas fa-hotel"></i>)
+        }
+    }
+
     render() {
         // console.log('itin state', this.state)
 
@@ -34,7 +44,7 @@ class Itin extends Component {
             <div className="Itin-main">
                 {this.state.itin.map(item => (
                     <div key={item.id} className="item-block">
-                        <div className="item-block-icon"><i className="fas fa-map-marked-alt"></i></div>
+                        <div className="item-block-icon">{this.handleIcon(item.category)}</div>
                         <div className="item-block-info">
                             <div className="item-block-title">{item.title}</div>
                             <div className="item-block-desc">{item.description}</div>
