@@ -20,6 +20,8 @@ class TripForm extends Component {
             location: '',
             start_date: '',
             end_date: '',
+            lat: 0,
+            lng: 0,
             id: this.props.user.id,
             submit: false
         };
@@ -40,7 +42,9 @@ class TripForm extends Component {
             location: this.state.location,
             start_date: this.state.start_date,
             end_date: this.state.end_date,
-            user_id: this.state.id
+            user_id: this.state.id,
+            lat: this.state.lat,
+            lng: this.state.lng
         });
         
         axios.post(`http://localhost:3000/users/${this.state.id}/trips`,
@@ -81,10 +85,18 @@ class TripForm extends Component {
         });
     };
 
-    handleLocationChange(event) {
-        console.log('search location', event)
+    handleLocationChange = (location) => {
+        this.setState({
+            location: location
+        })
     }
 
+    handleLatLng = (lat, lng) => {
+        this.setState({
+            lat: lat,
+            lng: lng
+        })
+    }
 
 
     render() {
@@ -104,9 +116,9 @@ class TripForm extends Component {
                             <form className="trip-form" onSubmit={this.handleSubmit}>
                                 <input className="form-control" type="text" name="title" placeholder="Title" autoComplete="off" value={this.state.title} onChange={this.handleChange} required />
                                 <br></br>
-                                <input className="form-control" type="text" name="location" placeholder="Where To?" autoComplete="off" value={this.state.location} onChange={this.handleChange} required />
-                                <br></br>
-                                <LocationSearch onChange={this.handleLocationChange}></LocationSearch>
+                                {/* <input className="form-control" type="text" name="location" placeholder="Where To?" autoComplete="off" value={this.state.location} onChange={this.handleChange} required />
+                                <br></br> */}
+                                <LocationSearch handleLocationChange={this.handleLocationChange} handleLatLng={this.handleLatLng}></LocationSearch>
                                 <br></br>
                                 <DateTime inputProps={{
                                     className: 'form-control',

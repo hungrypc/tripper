@@ -12,12 +12,18 @@ class LocationSearch extends Component {
 
     handleChange = address => {
         this.setState({ address });
+        console.log('location change address', this.state.address)
     };
 
     handleSelect = address => {
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', latLng))
+            .then(latLng => {
+                console.log('Success', latLng);
+                console.log('after select state', this.state.address);
+                this.props.handleLocationChange(this.state.address);
+                this.props.handleLatLng(latLng.lat, latLng.lng)
+            })
             .catch(error => console.error('Error', error));
     };
 
@@ -55,7 +61,7 @@ class LocationSearch extends Component {
                                             style,
                                         })}
                                     >
-                                        <span className="suggestion-desc">{suggestion.description}</span>
+                                        <span className="suggestion-desc" onClick={() => {this.setState({address: suggestion.description})}}>{suggestion.description}</span>
                                     </div>
                                 );
                             })}

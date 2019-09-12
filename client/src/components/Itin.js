@@ -32,7 +32,7 @@ class Itin extends Component {
         if (category === "activity") {
             return (<i className="fas fa-map-marked-alt"></i>)
         } else if (category === "transport") {
-            return (<i className="fas fa-car"></i>)
+            return (<i className="fas fa-bus-alt"></i>)
         } else if (category === "accomodation") {
             return (<i className="fas fa-hotel"></i>)
         }
@@ -42,6 +42,7 @@ class Itin extends Component {
         axios.delete(`http://localhost:3001/users/${this.props.user.id}/trips/${this.props.trip.id}/days/${this.props.day_id}/items/${id}`)
             .then(res => {
                 this.props.handleItin(this.props.day_id);
+                console.log(res)
             })
     }
 

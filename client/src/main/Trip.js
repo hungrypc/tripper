@@ -21,10 +21,6 @@ class Trip extends Component {
         }
     }
 
-    componentWillMount() {
-
-    }
-
     componentDidMount() {
 
         if (!this.state.trip || !this.state.user) {
