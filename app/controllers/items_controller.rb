@@ -32,6 +32,10 @@ class ItemsController < ApplicationController
 
 
     def destroy
+        puts "DESTROY PARAMS"
+        puts params
+        puts "END"
+
         @item = Item.find_by(id: params[:id])
         @item.destroy
     end

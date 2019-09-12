@@ -109,14 +109,7 @@ class Trip extends Component {
                                 <div className="trip-right-container">
                                     <div className="map-container">
                                         <Map></Map>
-                                    </div>
-                                    {/* <div className="trip-info-container">
-                                        <div className="trip-info">
-                                            <div className="trip-info-data"><strong>location:</strong> {this.state.trip.location}</div>
-                                            <div className="trip-info-data"><strong>start:</strong> {moment(this.state.trip.start_date.toString()).format('Do MMM YYYY')}</div>
-                                            <div className="trip-info-data"><strong>end: </strong> {moment(this.state.trip.end_date.toString()).format('Do MMM YYYY')}</div>
-                                        </div>
-                                    </div> */}
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>

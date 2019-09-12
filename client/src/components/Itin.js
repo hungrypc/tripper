@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 // import { Button } from 'react-bootstrap';
 // import axios from 'axios';
 
@@ -37,6 +38,13 @@ class Itin extends Component {
         }
     }
 
+    handleDelete(id) {
+        axios.delete(`http://localhost:3001/users/${this.props.user.id}/trips/${this.props.trip.id}/days/${this.props.day_id}/items/${id}`)
+            .then(res => {
+                this.props.handleItin(this.props.day_id);
+            })
+    }
+
     render() {
         // console.log('itin state', this.state)
 
@@ -47,6 +55,7 @@ class Itin extends Component {
                         <div className="item-block-icon">{this.handleIcon(item.category)}</div>
                         <div className="item-block-info">
                             <div className="item-block-title">{item.title}</div>
+                            <div className="item-block-delete"><i className="far fa-trash-alt" onClick={() => { this.handleDelete(item.id) }}></i></div>
                             <div className="item-block-desc">{item.description}</div>
                         </div>                        
                     </div>

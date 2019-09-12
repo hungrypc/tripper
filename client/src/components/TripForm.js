@@ -81,6 +81,10 @@ class TripForm extends Component {
         });
     };
 
+    handleLocationChange(event) {
+        console.log('search location', event)
+    }
+
 
 
     render() {
@@ -102,7 +106,7 @@ class TripForm extends Component {
                                 <br></br>
                                 <input className="form-control" type="text" name="location" placeholder="Where To?" autoComplete="off" value={this.state.location} onChange={this.handleChange} required />
                                 <br></br>
-                                <LocationSearch></LocationSearch>
+                                <LocationSearch onChange={this.handleLocationChange}></LocationSearch>
                                 <br></br>
                                 <DateTime inputProps={{
                                     className: 'form-control',

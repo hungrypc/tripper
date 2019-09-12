@@ -122,7 +122,7 @@
 
 #add-item-button {
     position: absolute;
-    bottom: 4.5%;
+    bottom: 4.1%;
     left: 46.5%;
 }
 
@@ -244,17 +244,31 @@
 }
 
 .item-block-title {
-    height: 50%;
-    width: 100%;
-    display: block;
+    height: 49%;
+    width: 90%;
+    display: inline-block;
     font-size: 1.5rem;
+    vertical-align: top;
     /* font-weight: 500; */
-    margin-bottom: 5px;
+}
+
+.item-block-delete {
+    height: 49%;
+    width: 10%;
+    display: inline-block;
+    font-size: 0.8rem;
+    vertical-align: top;
+    text-align: right;
+}
+
+.fa-trash-alt {
+    cursor: pointer;
 }
 
 .item-block-desc {
-    height: 50%;
+    height: 49%;
     width: 100%;
     display: block;
     font-size: 1rem;
+    /* margin-top: 1%; */
 }
