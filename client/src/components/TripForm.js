@@ -37,6 +37,7 @@ class TripForm extends Component {
         // console.log('this', this);
 
         event.preventDefault();
+        
         this.setState({
             title: this.state.title,
             location: this.state.location,
@@ -46,6 +47,7 @@ class TripForm extends Component {
             lat: this.state.lat,
             lng: this.state.lng
         });
+        console.log('tripform submit state', this.state)
         
         axios.post(`http://localhost:3000/users/${this.state.id}/trips`,
             {
@@ -54,10 +56,12 @@ class TripForm extends Component {
                 location: this.state.location,
                 start_date: this.state.start_date,
                 end_date: this.state.end_date,
-                user_id: this.state.id
+                user_id: this.state.id,
+                lat: this.state.lat,
+                lng: this.state.lng
             })
             .then((response) => {
-                // console.log('tripform res data', response.data)
+                console.log('tripform res data', response.data)
 
                 this.props.handleTrip(response.data);
                 this.props.history.push(`/users/${this.state.id}/trips/${response.data.trip.id}`);
@@ -92,6 +96,7 @@ class TripForm extends Component {
     }
 
     handleLatLng = (lat, lng) => {
+        console.log('handle latlng', lat, lng)
         this.setState({
             lat: lat,
             lng: lng

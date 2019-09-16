@@ -21,6 +21,10 @@ class Trip extends Component {
         }
     }
 
+    // componentWillMount() {
+    //     console.log('trip comp will mount', this.state)
+    // }
+
     componentDidMount() {
 
         if (!this.state.trip || !this.state.user) {
@@ -104,7 +108,7 @@ class Trip extends Component {
                             <div className="trip-right">
                                 <div className="trip-right-container">
                                     <div className="map-container">
-                                        <Map></Map>
+                                        <Map lat={this.state.trip.lat} lng={this.state.trip.lng}></Map>
                                     </div>                                    
                                 </div>
                             </div>

@@ -4,7 +4,7 @@ import PlacesAutocomplete, {
     getLatLng,
 } from 'react-places-autocomplete';
 
-class LocationSearch extends Component {
+class ItemLocationSearch extends Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -24,15 +24,13 @@ class LocationSearch extends Component {
             .then(results => getLatLng(results[0]))
             .then(latLng => {
                 console.log('Success', latLng);
-                console.log('lat', latLng.lat)
-                console.log('after select state', this.state.address);
                 this.setState({
                     lat: latLng.lat,
                     lng: latLng.lng
                 })
-                console.log('after latlng set state', this.state)
-                this.props.handleLocationChange(this.state.address);
-                this.props.handleLatLng(this.state.lat, this.state.lng)
+                // console.log('after latlng set state', this.state)
+                // this.props.handleLocationChange(this.state.address);
+                this.props.handleItemLatLng(this.state.lat, this.state.lng)
             })
             .catch(error => console.error('Error', error));
     };
@@ -44,13 +42,13 @@ class LocationSearch extends Component {
                 value={this.state.address}
                 onChange={this.handleChange}
                 onSelect={this.handleSelect}
-                searchOptions={{types: ['(regions)']}}
+                // searchOptions={{types: ['(regions)']}}
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                     <div className="suggestion-container">
                         <input 
                             {...getInputProps({
-                                placeholder: 'Where To?',
+                                placeholder: 'Address',
                                 className: 'location-search-input form-control',
                             })}
                         />
@@ -83,4 +81,4 @@ class LocationSearch extends Component {
     }
 }
 
-export default LocationSearch;
+export default ItemLocationSearch;

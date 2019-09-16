@@ -4,18 +4,19 @@ import GoogleMapReact from 'google-map-react';
 
 
 // const google = window.google;
+// const AnyReactComponent = () => <i className="fas fa-map-pin"></i>
 
 class Map extends Component {
     constructor(props) {
         super(props)
         this.state = {
             staticCenter: {
-                lat: 52.540907325494565,
-                lng: 18.963404146876883
+                lat: parseFloat(this.props.lat),
+                lng: parseFloat(this.props.lng)
             },
             center: {
-                lat: 52.540907325494565,
-                lng: 18.963404146876883
+                lat: parseFloat(this.props.lat),
+                lng: parseFloat(this.props.lng)
             },
             markers: [],
             map: {},
@@ -32,18 +33,18 @@ class Map extends Component {
         //this.initAutocomplete(this.reference);
     }
 
-    // addMarker = (obj) => {
-    //     console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
-    //     // this.setState({
-    //     //     markers: [
-    //     //         {
-    //     //             lat: obj.lat,
-    //     //             lng: obj.lng
-    //     //         }
-    //     //     ]
-    //     // })
-    //     console.log('markers', this.state.markers)
-    // }
+    addMarker = (obj) => {
+        console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
+        this.setState({
+            markers: [
+                {
+                    lat: obj.lat,
+                    lng: obj.lng
+                }
+            ]
+        })
+        console.log('markers', this.state.markers)
+    }
 
     // changeCenter = (lat, lng) => {
     //     this.setState({
@@ -170,15 +171,15 @@ class Map extends Component {
                     bootstrapURLKeys={{ key: 'AIzaSyCElThC6F3OHNpkBBWu-6fHLzH9GT-p1A4' }}
                     defaultCenter={ this.state.staticCenter }
                     center={this.state.center}
-                    defaultZoom={9}
+                    defaultZoom={12}
                     onClick={this.addMarker}
                     // onTilesLoaded={({map, maps}) => this.setMarkers(map, maps)}
                     // onGoogleApiLoaded={({map, maps}) => this.setMarkers(map, maps)}
                     yesIWantToUseGoogleMapApiInternals={true}
                 >
                     {/* <AnyReactComponent
-                        lat={59.955413}
-                        lng={30.337844}
+                        lat={37.566535}
+                        lng={126.9779692}
                     /> */}
                 </GoogleMapReact>
 

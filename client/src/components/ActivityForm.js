@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ItemLocationSearch from '../components/ItemLocationSearch';
 import { Modal } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
@@ -9,6 +10,8 @@ class ActivityForm extends Component {
         this.state = {
             title: '',
             description: '',
+            lat: 0,
+            lng: 0,
             category: 'activity',
             submit: false
         };
@@ -24,7 +27,9 @@ class ActivityForm extends Component {
         this.setState({
             title: this.state.title,
             description: this.state.description,
-            category: this.state.type
+            category: this.state.type,
+            lat: this.state.lat,
+            lng: this.state.lng
         });
 
         this.props.onHide();
@@ -36,25 +41,37 @@ class ActivityForm extends Component {
                 title: this.state.title,
                 description: this.state.description,
                 category: this.state.category,
-                day_id: this.props.day_id
+                day_id: this.props.day_id,
+                lat: this.state.lat,
+                lng: this.state.lng
             })
             .then((res) => {
-                // console.log('post item res', res)
+                console.log('post item res', res)
                 this.setState({
                     title: '',
                     description: '',
-                    category: 'activity'
+                    category: 'activity',
+                    lat: 0,
+                    lng: 0
                 })
                 this.props.handleItin(this.props.day_id)
             })
 
     }
 
-
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         })
+    }
+
+    handleItemLatLng = (lat, lng) => {
+        console.log('handle item lat lng', lat, lng);
+        this.setState({
+            lat,
+            lng
+        })
+        console.log('activity form state after latlng', this.state)
     }
 
 
@@ -75,6 +92,8 @@ class ActivityForm extends Component {
                                 <input className="form-control" type="text" name="title" placeholder="Title" autoComplete="off" value={this.state.title} onChange={this.handleChange} required />
                                 <br></br>
                                 <input className="form-control" type="text" name="description" placeholder="Description" autoComplete="off" value={this.state.description} onChange={this.handleChange} required />
+                                <br></br>
+                                <ItemLocationSearch handleItemLatLng={this.handleItemLatLng}></ItemLocationSearch>
                                 <br></br>
                                 <select className="form-control" id="exampleFormControlSelect1" value={this.state.category} name="category" onChange={this.handleChange}>
                                     <option value="activity">Activity</option>
