@@ -7,12 +7,21 @@ class Days extends Component {
         this.state = {
             user: this.props.user,
             trip: this.props.trip,
+            day_id: this.props.day_id,
             days: [],
         }
     }
 
     componentDidMount() {
         this.getDays();
+    }
+
+    componentWillReceiveProps(nextprops) {
+        if (this.state.day_id !== nextprops.day_id) {
+            this.setState({
+                day_id: nextprops.day_id
+            })
+        }
     }
 
     getDays = () => {
@@ -40,7 +49,7 @@ class Days extends Component {
         return (
             <div className="Days">
                 {this.state.days.map((day, i) => (
-                    <div key={day.id} className="day-block" onClick={() => {this.props.handleDay(day.id)}}>DAY {i + 1}</div>
+                    <div key={day.id} className={this.state.day_id === day.id ? 'activeDay' : 'day-block'} onClick={() => {this.props.handleDay(day.id)}}>DAY {i + 1}</div>
                 ))}
                 <div id="add-day" className="day-block-plus" onClick={() => { this.addDay() }}>+</div>
             </div>

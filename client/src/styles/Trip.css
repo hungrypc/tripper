@@ -281,3 +281,19 @@
     font-size: 2rem;
     color: red;
 }
+
+.activeDay {
+    width: 100px;
+    height: 100%;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 0.5%;
+    /* background-color: #f5f6f7; */
+    /* border: 1px solid black; */
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: #023246;
+    color: white;
+}

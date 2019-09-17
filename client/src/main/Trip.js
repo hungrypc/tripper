@@ -85,7 +85,7 @@ class Trip extends Component {
                         <div className="trip-bottom">
                             <div className="trip-left">
                                 <div className="days-container">
-                                    <Days user={this.state.user} trip={this.state.trip} setDayid={this.setDayid}
+                                    <Days user={this.state.user} trip={this.state.trip} day_id={this.state.day_id} setDayid={this.setDayid}
                                         handleDay={this.handleDay} handleItin={this.handleItin}></Days>
                                 </div>
                                 <div className="itin-container">
@@ -108,7 +108,8 @@ class Trip extends Component {
                             <div className="trip-right">
                                 <div className="trip-right-container">
                                     <div className="map-container">
-                                        <Map lat={this.state.trip.lat} lng={this.state.trip.lng}></Map>
+                                        <Map lat={this.state.trip.lat} lng={this.state.trip.lng}
+                                        itin={this.state.itin}></Map>
                                     </div>                                    
                                 </div>
                             </div>
