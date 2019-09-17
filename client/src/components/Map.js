@@ -14,16 +14,21 @@ class Map extends Component {
                 lng: Number(this.props.lng)
             },
             itin: this.props.itin,
+            day_id: this.props.day_id,
             markers: [],
             map: {},
             maps: {}
         }
-        this.markers =[];
         this.mapReference = React.createRef();
 
     }
 
     componentWillReceiveProps(nextprops) {
+        if (this.state.day_id !== nextprops.day_id) {
+            this.state.markers.forEach(function (marker) {
+                marker.setMap(null);
+            });
+        }
         if (this.state.itin !== nextprops.itin) {
             this.setState({
                 itin: nextprops.itin
@@ -42,22 +47,22 @@ class Map extends Component {
             map: map,
             maps: maps
         })
-        for (let item of this.state.itin){
+        for (let item of this.state.itin) {
             this.state.markers.push(new this.state.maps.Marker({
                 map: this.state.map,
                 title: 'set',
-                position: {lat: Number(item.lat), lng: Number(item.lng)}
+                position: { lat: Number(item.lat), lng: Number(item.lng) }
             }))
         }
 
     }
 
     renderMarkers() {
-        for (let item of this.state.itin){
+        for (let item of this.state.itin) {
             this.state.markers.push(new this.state.maps.Marker({
                 map: this.state.map,
                 title: 'render',
-                position: {lat: Number(item.lat), lng: Number(item.lng)}
+                position: { lat: Number(item.lat), lng: Number(item.lng) }
             }))
         }
     }
@@ -65,7 +70,7 @@ class Map extends Component {
 
     render() {
 
-        if(this.state.maps.Marker){
+        if (this.state.maps.Marker) {
             this.renderMarkers()
         }
 
@@ -73,11 +78,11 @@ class Map extends Component {
             <div className="map">
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: 'AIzaSyCElThC6F3OHNpkBBWu-6fHLzH9GT-p1A4' }}
-                    defaultCenter={ this.state.staticCenter }
+                    defaultCenter={this.state.staticCenter}
                     center={this.state.center}
                     defaultZoom={12}
-                    onClick={this.findLatLng}                
-                    onGoogleApiLoaded={({map, maps}) => this.setMarkers(map, maps)}
+                    onClick={this.findLatLng}
+                    onGoogleApiLoaded={({ map, maps }) => this.setMarkers(map, maps)}
                     yesIWantToUseGoogleMapApiInternals={true}
                 >
                 </GoogleMapReact>

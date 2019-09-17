@@ -109,7 +109,7 @@ class Trip extends Component {
                                 <div className="trip-right-container">
                                     <div className="map-container">
                                         <Map lat={this.state.trip.lat} lng={this.state.trip.lng}
-                                        itin={this.state.itin}></Map>
+                                        itin={this.state.itin} day_id={this.state.day_id}></Map>
                                     </div>                                    
                                 </div>
                             </div>
