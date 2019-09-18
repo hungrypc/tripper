@@ -23,7 +23,6 @@ class ActivityForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-
         this.setState({
             title: this.state.title,
             description: this.state.description,
@@ -63,12 +62,10 @@ class ActivityForm extends Component {
     }
 
     handleItemLatLng = (lat, lng) => {
-        console.log('handle item lat lng', lat, lng);
         this.setState({
             lat,
             lng
         })
-        console.log('activity form state after latlng', this.state)
     }
 
 

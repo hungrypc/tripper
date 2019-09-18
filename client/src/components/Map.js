@@ -20,7 +20,6 @@ class Map extends Component {
             maps: {}
         }
         this.mapReference = React.createRef();
-
     }
 
     componentWillReceiveProps(nextprops) {
@@ -50,7 +49,6 @@ class Map extends Component {
     }
 
     setMarkers = (map, maps) => {
-
         this.setState({
             map: map,
             maps: maps
@@ -62,7 +60,6 @@ class Map extends Component {
                 position: { lat: Number(item.lat), lng: Number(item.lng) }
             }))
         }
-
     }
 
     renderMarkers() {
@@ -80,12 +77,9 @@ class Map extends Component {
             newMarker.addListener('click', function() {
                 infowindow.open(window.google.map, newMarker);
             });
-
-            this.state.markers.push(newMarker)
-            
+            this.state.markers.push(newMarker) 
         }
     }
-
 
     render() {
 

@@ -15,31 +15,33 @@ class Trip extends Component {
         this.state = {
             user: this.props.user,
             trip: this.props.trip,
-            day_id: 0,
+            day_id: null,
             itin: [],
             actModalShow: false
         }
     }
 
     componentWillMount() {
-
-        if (!this.props.trip || !this.props.user) {
+        if (!localStorage.getItem('trip')) {
             this.props.history.push('/');
+        } else {
+            let current_trip = JSON.parse(localStorage.getItem('trip'))
+            let current_user = JSON.parse(localStorage.getItem('user'))
+            this.setState({
+                user: current_user,
+                trip: current_trip
+            })
+            console.log('setting trip w local storage', this.state)
         }
-
-        // need to pull trip data with axios
     }
 
     // gets day and sets day_id state to that day, pulls itin via that day
     handleDay = (data) => {
         axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days/${data}`)
             .then(res => {
-                // console.log('show day res', res)
                 this.setState({
                     day_id: res.data.day.id
                 })
-                // console.log('setstate', this.state.day_id)
-
                 this.handleItin(res.data.day.id);
             })
     }
@@ -47,17 +49,24 @@ class Trip extends Component {
     handleItin = (data) => {
         axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days/${data}/items`)
             .then(res => {
-                // console.log('handleItin res', res)
                 this.setState({
                     itin: res.data.items
                 })
             })
     }
 
+    showBtn() {
+        if (this.state.day_id !== null) {
+            return (
+            <Button id="add-item-button" variant='dark' onClick={() => { this.setState({ actModalShow: true }) }}>
+                Add Item
+            </Button>
+            )
+        }
+    }
+
 
     render() {
-        // console.log('trip user', this.state.user);
-        // console.log('trip data', this.state.trip);
 
         let addModalClose = () => {
             this.setState({
@@ -67,7 +76,7 @@ class Trip extends Component {
 
         return (
             <div className="Trip">
-                <Navbar user={this.state.user}/>
+                <Navbar user={this.state.user} />
                 <div className="trip-wrapper">
                     <div className="trip-container">
                         <div className="trip-titlecard">
@@ -90,9 +99,7 @@ class Trip extends Component {
                                             handleItin={this.handleItin}></Itin>
                                     </div>
                                     <ButtonToolbar>
-                                        <Button id="add-item-button" variant='dark' onClick={() => { this.setState({ actModalShow: true }) }}>
-                                            Add Item
-                                        </Button>
+                                        {this.showBtn()}
                                         <ActivityForm show={this.state.actModalShow} onHide={addModalClose}
                                             user={this.state.user} trip={this.state.trip} day_id={this.state.day_id}
                                             handleItin={this.handleItin}
@@ -105,8 +112,8 @@ class Trip extends Component {
                                 <div className="trip-right-container">
                                     <div className="map-container">
                                         <Map lat={this.state.trip.lat} lng={this.state.trip.lng}
-                                        itin={this.state.itin} day_id={this.state.day_id}></Map>
-                                    </div>                                    
+                                            itin={this.state.itin} day_id={this.state.day_id}></Map>
+                                    </div>
                                 </div>
                             </div>
                         </div>

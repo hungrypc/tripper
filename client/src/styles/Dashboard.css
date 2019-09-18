@@ -61,8 +61,10 @@
 }
 
 .dash-user-info p {
+    font-size: 1.1rem;
     vertical-align: middle;
     margin: 1% 0;
+    font-weight: 400;
 }
 
 .friends-wrapper {
@@ -108,6 +110,10 @@
     margin: 0 10px;
     border: 1px solid #e6e6e6;
     border-radius: 12px;
+}
+
+.trip-block-title {
+    font-weight: 700;
 }
 
 .trip-block-img {

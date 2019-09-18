@@ -32,12 +32,8 @@ class TripForm extends Component {
         this.handleEndDateChange = this.handleEndDateChange.bind(this);
     }
 
-
     handleSubmit = (event) => {
-        // console.log('this', this);
-
         event.preventDefault();
-        
         this.setState({
             title: this.state.title,
             location: this.state.location,
@@ -47,11 +43,8 @@ class TripForm extends Component {
             lat: this.state.lat,
             lng: this.state.lng
         });
-        console.log('tripform submit state', this.state)
-        
         axios.post(`http://localhost:3000/users/${this.state.id}/trips`,
             {
-                // user_id: this.props.cookies.get('user_id'),
                 title: this.state.title,
                 location: this.state.location,
                 start_date: this.state.start_date,
@@ -61,15 +54,10 @@ class TripForm extends Component {
                 lng: this.state.lng
             })
             .then((response) => {
-                console.log('tripform res data', response.data)
-
                 this.props.handleTrip(response.data);
                 this.props.history.push(`/users/${this.state.id}/trips/${response.data.trip.id}`);
-
             })
-        // return this.setState({ error: '' });
     }
-
 
     handleChange(event) {
         this.setState({
@@ -103,10 +91,7 @@ class TripForm extends Component {
         })
     }
 
-
     render() {
-
-
         return (
             <div>
                 <Modal
@@ -121,8 +106,6 @@ class TripForm extends Component {
                             <form className="trip-form" onSubmit={this.handleSubmit}>
                                 <input className="form-control" type="text" name="title" placeholder="Title" autoComplete="off" value={this.state.title} onChange={this.handleChange} required />
                                 <br></br>
-                                {/* <input className="form-control" type="text" name="location" placeholder="Where To?" autoComplete="off" value={this.state.location} onChange={this.handleChange} required />
-                                <br></br> */}
                                 <LocationSearch handleLocationChange={this.handleLocationChange} handleLatLng={this.handleLatLng}></LocationSearch>
                                 <br></br>
                                 <DateTime inputProps={{
@@ -152,7 +135,6 @@ class TripForm extends Component {
                         </div>
                     </Modal.Body>
                 </Modal>
-
             </div>
         )
     }

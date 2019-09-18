@@ -19,6 +19,11 @@ class Home extends Component {
         this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
     }
 
+    componentWillMount = () => {
+        if (localStorage.getItem('user')) {
+            this.props.history.push('/dashboard');
+        }
+    }
 
     handleSuccessfulAuth(data) {
         this.props.handleLogin(data)

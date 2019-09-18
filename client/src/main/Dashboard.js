@@ -15,18 +15,24 @@ class Dashboard extends Component {
         }
     }
 
-    componentDidMount() {
-        if (!this.state.user) {
+    componentWillMount() {
+        if (!localStorage.getItem('user')) {
             this.props.history.push('/');
+        } else {
+            let current_user = JSON.parse(localStorage.getItem('user'))
+        this.setState({
+            user: current_user
+        })
+        console.log('local storage get item user state', this.state)
         }
+    }
 
+    componentDidMount() {
         axios.get(`http://localhost:3001/users/${this.state.user.id}/trips`)
             .then(res => {
-                // console.log('get trips index response', res);
                 this.setState({
                     trips: res.data.trips
                 })
-                // console.log('dash trip state', this.state.trips)
             })
     }
 
@@ -37,9 +43,6 @@ class Dashboard extends Component {
 
 
     render() {
-
-        // console.log("dashboard user state", this.state.user)
-
         let addModalClose = () => {
             this.setState({
                 addModalShow: false
@@ -48,7 +51,7 @@ class Dashboard extends Component {
 
         return (
             <div className="dashboard">
-                <Navbar user={this.state.user}/>
+                <Navbar user={this.state.user} />
                 <div className="top-wrapper">
                     <div className="profile-wrapper">
                         <div className="dash-profile-picture-container">
@@ -56,9 +59,9 @@ class Dashboard extends Component {
                         </div>
                         <div className="dash-user-info-wrapper">
                             <div className="dash-user-info">
-                                <p>{this.props.user.name}</p>
-                                <p>{this.props.user.email}</p>
-                                <p>{this.props.loggedInStatus}</p>
+                                <p>{this.state.user.name}</p>
+                                <p>{this.state.user.email}</p>
+                                <p>{this.state.loggedInStatus}</p>
                             </div>
                         </div>
                     </div>
@@ -75,13 +78,13 @@ class Dashboard extends Component {
                 </div>
                 <div className="bottom-wrapper">
                     <div className="prev-trips-wrapper">
-                        {this.state.trips.map( trip => (
+                        {this.state.trips.map(trip => (
                             <div className="trip-block" key={trip.id}>
                                 <div className="trip-block-img"></div>
-                                <div>{trip.title}</div>
+                                <div className="trip-block-title">{trip.title}</div>
                                 <div>{trip.location}</div>
-                                <div id="goto-trip"                            
-                                onClick={() => {this.clickTrip(trip)}}
+                                <div id="goto-trip"
+                                    onClick={() => { this.clickTrip(trip) }}
                                 > View </div>
                             </div>
                         ))}

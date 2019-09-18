@@ -25,3 +25,8 @@ label {
 .trip-form button {
     margin: 0 27%;
 }
+
+.dropdown-menu {
+    right: 0;
+    left: auto;
+}

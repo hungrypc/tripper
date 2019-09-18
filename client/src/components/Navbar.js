@@ -6,7 +6,10 @@ class Navbar extends Component {
         this.state = {
             user: this.props.user
         }
+    }
 
+    handleLogout() {
+        localStorage.clear();
     }
 
     render() {
@@ -25,7 +28,15 @@ class Navbar extends Component {
                     )}
                     {this.state.user && (
                         <div className="navbar-nav ml-auto">
-                            <a className="nav-item nav-link" href="/dashboard">{this.state.user.name}</a>
+                            <li className="nav-item dropdown">
+                                {/* eslint-disable-next-line */}
+                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {this.state.user.name}
+                                </a>
+                                <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a className="dropdown-item" href="/" onClick={() => {this.handleLogout()}}>Log Out</a>
+                                </div>
+                            </li>
                         </div>
                     )}
                 </div>

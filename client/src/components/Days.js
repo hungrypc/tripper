@@ -27,7 +27,6 @@ class Days extends Component {
     getDays = () => {
         axios.get(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days`)
             .then(res => {
-                // console.log('get days response', res);
                 this.setState({
                     days: res.data.days
                 })
@@ -37,7 +36,6 @@ class Days extends Component {
     addDay = () => {
         axios.post(`http://localhost:3001/users/${this.state.user.id}/trips/${this.state.trip.id}/days`)
             .then(res => {
-                // console.log('day post res', res)
                 this.props.handleDay(res.data.day.id)
                 this.getDays()
             })

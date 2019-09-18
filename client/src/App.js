@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Navbar from './components/Navbar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './main/Home';
 import Dashboard from './main/Dashboard';
@@ -49,21 +48,22 @@ class App extends Component {
     this.setState({
       loggedInStatus: "LOGGED_IN",
       user: data.user,
-      // cookie: cookie.get('user_id')
     })
-    // console.log(this.state)
+    localStorage.setItem('user', JSON.stringify(data.user));
   }
 
   handleTrip = (data) => {
     this.setState({
       trip: data.trip
     })
+    localStorage.setItem('trip', JSON.stringify(data.trip));
   }
 
   setTrip = (data) => {
     this.setState({
       trip: data
     })
+    localStorage.setItem('trip', JSON.stringify(data));
   }
 
 

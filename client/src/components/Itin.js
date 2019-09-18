@@ -37,8 +37,6 @@ class Itin extends Component {
     }
 
     render() {
-        // console.log('itin state', this.state)
-
         return (
             <div className="Itin-main">
                 {this.state.itin.map(item => (
