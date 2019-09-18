@@ -232,6 +232,12 @@
     color: rgb(106, 106, 106);
 }
 
+.fa-hotel {
+    font-size: 0.9rem;
+}
+
+/* MORE SHIT */
+
 .item-block-info {
     height: 100%;
     width: 90%;
@@ -259,11 +265,35 @@
     border:  1px solid #aaa;
 }
 
-.item-block:first-of-type .item-block-info .line .icon-circle:first-of-type {
+.item-block:last-child  .item-block-info .line{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 9%;
+    width: 0px;
+    height: 30%;
+    border:  1px solid #aaa;
+}
+
+.item-block:first-of-type .item-block-info .line .icon-circle {
     content: '';
     width: 30px;
     height: 30px;
     top: -9%;
+    border: 2px solid #aaa;
+    position: absolute;
+    border-radius: 50%;
+    left: -14.3px;
+    background: #fff;
+    text-align: center;
+    line-height: 21px;
+}
+
+.item-block:last-child .item-block-info .line .icon-circle {
+    content: '';
+    width: 30px;
+    height: 30px;
+    top: 86%;
     border: 2px solid #aaa;
     position: absolute;
     border-radius: 50%;

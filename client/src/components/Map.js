@@ -29,12 +29,19 @@ class Map extends Component {
             this.state.markers.forEach(function (marker) {
                 marker.setMap(null);
             });
+            this.deleteMarkers();
         }
         if (this.state.itin !== nextprops.itin) {
             this.setState({
                 itin: nextprops.itin
             })
         }
+    }
+
+    deleteMarkers = () => {
+        this.setState({
+            markers: []
+        })
     }
 
     findLatLng = (obj) => {
@@ -60,11 +67,22 @@ class Map extends Component {
 
     renderMarkers() {
         for (let item of this.state.itin) {
-            this.state.markers.push(new this.state.maps.Marker({
+            let infowindow = new this.state.maps.InfoWindow({
+                content: item.title
+              });
+
+            let newMarker = new this.state.maps.Marker({
                 map: this.state.map,
-                title: 'render',
+                title: item.title,
+                animation: this.state.maps.Animation.DROP,
                 position: { lat: Number(item.lat), lng: Number(item.lng) }
-            }))
+            })
+            newMarker.addListener('click', function() {
+                infowindow.open(window.google.map, newMarker);
+            });
+
+            this.state.markers.push(newMarker)
+            
         }
     }
 
