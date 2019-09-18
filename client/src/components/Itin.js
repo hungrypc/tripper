@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { Button } from 'react-bootstrap';
-// import axios from 'axios';
+
 
 class Itin extends Component {
     constructor(props) {
@@ -18,15 +17,6 @@ class Itin extends Component {
             })
         }
     }
-
-    //  rewrite this to handle more errors, slightly sloppy
-    // defaultDay = () => {
-    //     if (this.state.day_id === 0) {
-    //         return "Please add a day."
-    //     } else {
-    //         return "Please add to the Itinerary."
-    //     }
-    // }
 
     handleIcon(category) {
         if (category === "activity") {
@@ -53,8 +43,11 @@ class Itin extends Component {
             <div className="Itin-main">
                 {this.state.itin.map(item => (
                     <div key={item.id} className="item-block">
-                        <div className="item-block-icon">{this.handleIcon(item.category)}</div>
+                        <div className="item-block-icon"></div>
                         <div className="item-block-info">
+                            <span className="line">
+                                <span className="icon-circle">{this.handleIcon(item.category)}</span>
+                            </span>
                             <div className="item-block-title">{item.title}</div>
                             <div className="item-block-delete"><i className="far fa-trash-alt" onClick={() => { this.handleDelete(item.id) }}></i></div>
                             <div className="item-block-desc">{item.description}</div>

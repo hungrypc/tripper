@@ -158,7 +158,7 @@
     /* border: 1px solid black; */
     border-radius: 15px;
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: 500;
     cursor: pointer;
 }
 
@@ -177,7 +177,7 @@
     background-color: #f1f1f1;
     border-radius: 15px;
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: 500;
     cursor: pointer;
 }
 
@@ -202,11 +202,12 @@
 }
 
 .item-block {
+    position: relative;
     height: 100px;
     width: 100%;
     display: flex;
     text-align: left;
-    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
     background-color: white;
     /* box-shadow: rgb(211, 211, 211) 0px 4px 4px; */
     /* border-radius: 12px; */
@@ -224,20 +225,11 @@
     width: 10%;
     display: inline-block;
     padding-left: 10px;
-    font-size: 2.5rem;
-    color: #023246;
 }
 
-.fa-map-marked-alt {
-    font-size: 2.7rem;
-}
-
-.fa-bus-alt {
-    font-size: 2.8rem;
-}
-
-.fa-hotel {
-    font-size: 2.4rem;
+.fas {
+    font-size: 1rem;
+    color: rgb(106, 106, 106);
 }
 
 .item-block-info {
@@ -247,26 +239,80 @@
     padding-left: 6%;
 }
 
+.item-block .item-block-info .line {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 9%;
+    width: 0px;
+    height: 100%;
+    border:  1px solid #aaa;
+}
+
+.item-block:first-of-type  .item-block-info .line{
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 9%;
+    width: 0px;
+    height: 70%;
+    border:  1px solid #aaa;
+}
+
+.item-block:first-of-type .item-block-info .line .icon-circle:first-of-type {
+    content: '';
+    width: 30px;
+    height: 30px;
+    top: -9%;
+    border: 2px solid #aaa;
+    position: absolute;
+    border-radius: 50%;
+    left: -14.3px;
+    background: #fff;
+    text-align: center;
+    line-height: 21px;
+}
+
+.item-block .item-block-info .line .icon-circle {
+    content: '';
+    width: 30px;
+    height: 30px;
+    top: 25%;
+    border: 2px solid #aaa;
+    position: absolute;
+    border-radius: 50%;
+    left: -14.3px;
+    background: #fff;
+    text-align: center;
+    line-height: 21px;
+}
+
 .item-block-title {
     height: 49%;
     width: 90%;
     display: inline-block;
     font-size: 1.5rem;
     vertical-align: top;
-    /* font-weight: 500; */
+    font-weight: 600;
 }
 
 .item-block-delete {
     height: 49%;
     width: 10%;
     display: inline-block;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     vertical-align: top;
     text-align: right;
 }
 
 .fa-trash-alt {
     cursor: pointer;
+    color: #aaa;
+}
+
+.fa-trash-alt:hover {
+    cursor: pointer;
+    color: black;
 }
 
 .item-block-desc {
@@ -275,11 +321,6 @@
     display: block;
     font-size: 1rem;
     /* margin-top: 1%; */
-}
-
-.fa-map-pin {
-    font-size: 2rem;
-    color: red;
 }
 
 .activeDay {

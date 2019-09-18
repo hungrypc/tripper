@@ -31,10 +31,7 @@ class ActivityForm extends Component {
             lat: this.state.lat,
             lng: this.state.lng
         });
-
         this.props.onHide();
-        // console.log('before post state', this.state)
-        // console.log('before post props', this.props)
 
         axios.post(`http://localhost:3001/users/${this.props.user.id}/trips/${this.props.trip.id}/days/${this.props.day_id}/items`,
             {

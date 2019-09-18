@@ -70,7 +70,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Navbar /> */}
         <BrowserRouter>
           <Switch>
             <Route exact path={"/"} render={props => (

@@ -24,6 +24,7 @@ class Map extends Component {
     }
 
     componentWillReceiveProps(nextprops) {
+        // if new day selected, clears prev markers
         if (this.state.day_id !== nextprops.day_id) {
             this.state.markers.forEach(function (marker) {
                 marker.setMap(null);
@@ -42,7 +43,7 @@ class Map extends Component {
     }
 
     setMarkers = (map, maps) => {
-        // const that = this;
+
         this.setState({
             map: map,
             maps: maps
@@ -80,7 +81,7 @@ class Map extends Component {
                     bootstrapURLKeys={{ key: 'AIzaSyCElThC6F3OHNpkBBWu-6fHLzH9GT-p1A4' }}
                     defaultCenter={this.state.staticCenter}
                     center={this.state.center}
-                    defaultZoom={12}
+                    defaultZoom={13}
                     onClick={this.findLatLng}
                     onGoogleApiLoaded={({ map, maps }) => this.setMarkers(map, maps)}
                     yesIWantToUseGoogleMapApiInternals={true}

@@ -28,8 +28,6 @@ class ItemLocationSearch extends Component {
                     lat: latLng.lat,
                     lng: latLng.lng
                 })
-                // console.log('after latlng set state', this.state)
-                // this.props.handleLocationChange(this.state.address);
                 this.props.handleItemLatLng(this.state.lat, this.state.lng)
             })
             .catch(error => console.error('Error', error));
@@ -42,7 +40,6 @@ class ItemLocationSearch extends Component {
                 value={this.state.address}
                 onChange={this.handleChange}
                 onSelect={this.handleSelect}
-                // searchOptions={{types: ['(regions)']}}
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                     <div className="suggestion-container">

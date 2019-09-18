@@ -21,13 +21,9 @@ class Trip extends Component {
         }
     }
 
-    // componentWillMount() {
-    //     console.log('trip comp will mount', this.state)
-    // }
+    componentWillMount() {
 
-    componentDidMount() {
-
-        if (!this.state.trip || !this.state.user) {
+        if (!this.props.trip || !this.props.user) {
             this.props.history.push('/');
         }
 
@@ -77,7 +73,7 @@ class Trip extends Component {
                         <div className="trip-titlecard">
                             <div className="titlecard-info">
                                 <div className="titlecard-title">{this.state.trip.title}</div>
-                                <div className="titlecard-details">{moment(this.state.trip.start_date.toString()).format('Do MMM YYYY')} ~ {moment(this.state.trip.end_date.toString()).format('Do MMM YYYY')}</div>
+                                <div className="titlecard-details">{moment(this.state.trip.start_date).format('Do MMM YYYY')} ~ {moment(this.state.trip.end_date).format('Do MMM YYYY')}</div>
                                 <div className="titlecard-details">{this.state.trip.location}</div>
                                 <div className="titlecard-users"></div>
                             </div>
