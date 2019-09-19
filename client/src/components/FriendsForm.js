@@ -43,9 +43,18 @@ class FriendForm extends Component {
         })
     }
 
+    addFriend = () => {
+        // axios.post(`http://localhost:3001/user_friends/`,
+        // {
+        //     user_id: this.props.user.id,
+        //     friend_id: this.state.hits.id
+        // })
+        console.log('addfriend', this.props.user.id, this.state.hits.id)
+    }
+
     showPlus = () => {
         if(this.state.hits.name) {
-            return (<i className="fas fa-plus"></i>)
+            return (<i className="fas fa-plus" onClick={()=> { this.addFriend() }}></i>)
         }
     }
 

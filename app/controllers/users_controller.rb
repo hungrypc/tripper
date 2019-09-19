@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
     def create
+        puts "USERS PARAMS"
+        puts params
+        puts "END"
 
         user = User.find_by(email: params["email"])
 
@@ -14,7 +17,6 @@ class UsersController < ApplicationController
     end
 
     def show
-        
     end
 
     def user_params
