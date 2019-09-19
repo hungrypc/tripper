@@ -43,6 +43,12 @@ class FriendForm extends Component {
         })
     }
 
+    showPlus = () => {
+        if(this.state.hits.name) {
+            return (<i className="fas fa-plus"></i>)
+        }
+    }
+
     render() {
 
         return (
@@ -63,9 +69,11 @@ class FriendForm extends Component {
                                 <br></br>
                                 <div className="search-list">
                                     <div>
-                                        <div className="hit-name">{this.state.hits.name}</div>
-                                        <div>{this.state.hits.email}</div>
-                                        <div></div>
+                                        <div className="hit-info">
+                                            <div className="hit-name">{this.state.hits.name}</div>
+                                            <div className="hit-email">{this.state.hits.email}</div>
+                                        </div>
+                                        <div className="hit-add">{this.showPlus()}</div>
                                     </div>
                                 </div>
                             </form>

@@ -176,12 +176,44 @@
     height: 100px;
     border: 1px solid #aaa;
     border-radius: 12px;
-    padding: 6% 5%;
+    padding: 6% 8%;
+}
+
+.hit-info {
+    height: 100%;
+    width: 80%;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .hit-name {
     font-size: 1.2rem;
+    height: 50%;
+    width: 100%;
 }
+
+.hit-email {
+    height: 50%;
+    width: 100%;
+}
+
+.hit-add {
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.fa-plus {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: rgb(106, 106, 106);
+}
+
+/* .fa-plus:hover {
+    color: #7daa68;
+} */
 
 .autocomplete-dropdown-container {
     width: 250px;
