@@ -12,7 +12,7 @@ In the other terminal, `cd` into `client`. Then run `npm start` and go to `local
 
 # Screenshots
 
-!["Screenshot of adding item"](https://github.com/hungrypc/tripper/blob/master/storage/1.png)
+!["Gif of adding item"](https://github.com/hungrypc/tripper/blob/master/storage/dem.gif)
 
 !["Screenshot of trip page"](https://github.com/hungrypc/tripper/blob/master/storage/2.png)
 

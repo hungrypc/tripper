@@ -4,6 +4,9 @@ class UserFriendsController < ApplicationController
     end
 
     def create
+
+        
+
     end
 
 end
